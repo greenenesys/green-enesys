@@ -1,4 +1,9 @@
 import {injectGlobal} from 'styled-components'
+import GTAmericaMedium from './assets/fonts/GTAmerica-Medium.woff'
+import GTAmericaMediumWOFF2 from './assets/fonts/GTAmerica-Medium.woff2'
+
+import GTAmericaRegular from './assets/fonts/GTAmerica-Regular.woff'
+import GTAmericaRegularWOFF2 from './assets/fonts/GTAmerica-Regular.woff2'
 
 export default injectGlobal`
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
@@ -10,6 +15,23 @@ export default injectGlobal`
  * 1. Correct the line height in all browsers.
  * 2. Prevent adjustments of font size after orientation changes in iOS.
  */
+
+@font-face {
+    font-family: 'GT America';
+    src: url(${GTAmericaMediumWOFF2}) format('woff2'),
+        url(${GTAmericaMedium}) format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GT America';
+    src: url(${GTAmericaRegular}) format('woff2'),
+        url(${GTAmericaRegularWOFF2}) format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 
 html {
   line-height: 1.15; /* 1 */
