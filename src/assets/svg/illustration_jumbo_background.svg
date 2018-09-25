@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="4000px" height="600px" viewBox="0 0 4000 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.3 (57544) - http://www.bohemiancoding.com/sketch -->
+    <title>Homepage Copy 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="100%" y2="83.3620837%" id="linearGradient-1">
+            <stop stop-color="#82B86A" offset="0%"></stop>
+            <stop stop-color="#21956E" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Homepage-Copy-4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="4000" height="600"></rect>
+        <path d="M-4.15312229e-12,1.59872116e-13 C86,1.59872116e-13 1419.33333,1.59872116e-13 4000,1.59872116e-13 L4000,524.567189 C3827.5938,574.85573 3655.76047,600 3484.5,600 C3314.42714,600 3144.92714,574.85573 2976,524.567189 C2768.66667,474.27535 2605.83333,449.129431 2487.5,449.129431 C2155.3861,449.129431 1848.40824,600 1537,600 C1353.12711,600 1182.12711,574.85573 1024,524.567189 C634.666667,374.85573 293.333333,368.833333 -3.19758647e-12,506.5 C-4.10577744e-12,230 -4.15688855e-12,71 -4.15312229e-12,1.59872116e-13 Z" id="Rectangle-9" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+    </g>
+</svg>

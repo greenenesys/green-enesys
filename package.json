@@ -1,0 +1,30 @@
+{
+  "name": "green-enesys",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@vx/group": "^0.0.170",
+    "@vx/pattern": "^0.0.165",
+    "@vx/shape": "^0.0.176",
+    "prismic-javascript": "^1.5.0",
+    "prismic-reactjs": "^0.3.1",
+    "prop-types": "^15.6.2",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest",
+    "react-scripts": "latest",
+    "react-simple-maps": "latest",
+    "react-slick": "^0.23.1",
+    "react-spring": "latest",
+    "react-tooltip": "^3.8.4",
+    "styled-components": "latest",
+    "styled-system": "latest",
+    "whatwg-fetch": "^3.0.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
+}
