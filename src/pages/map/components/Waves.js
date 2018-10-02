@@ -7,7 +7,7 @@ const Wrapper = styled('div')`
   height: 100%;
   position: absolute;
   z-index: -1;
-  background-color: #FFC539;
+  background-color: #FFFFFF;
 `
 const Waves = () =>
     <Wrapper>
@@ -17,14 +17,14 @@ const Waves = () =>
                 height={12}
                 width={12}
                 fill="transparent"
-                stroke="#434343"
+                stroke="white"
                 strokeWidth={1.5}
             />
             <PatternLines
                 id='Lines'
                 height={4}
                 width={4}
-                stroke='black'
+                stroke='blue'
                 strokeWidth={1}
                 orientation={['diagonal']}
             />

@@ -16,25 +16,25 @@ const ProjectMarkers = ({ geography }) => {
                             projection={projection}
                             style={{
                                 default: {
-                                    fill: `#FFD673`,
+                                    fill: `#F0F0F0`,
                                     // stroke: stroke,
                                     strokeWidth: 0.2,
                                     outline: 'none',
                                     transition: 'all 0.25s ease-in-out',
                                 },
                                 hover: {
-                                    fill: '#FFD673',
+                                    fill: '#e6e5e8',
                                     stroke: 'none',
                                     strokeWidth: 0.2,
                                     zIndex: 10,
                                     //outline: 'none',
                                 },
-                                /*pressed: {
-                                    fill: '#FF5722',
-                                    stroke: '#607D8B',
-                                    strokeWidth: 0.3,
-                                    outline: 'none',
-                                },*/
+                                pressed: {
+                                    fill: '#f7faf4',
+                                    stroke: 'none',
+                                    strokeWidth: 0.2,
+                                    zIndex: 10,
+                                },
                             }}
                         />
                     )

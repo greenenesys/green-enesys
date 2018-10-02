@@ -1,11 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import { ContentWrapper } from '../../components/Grid/ContentWrapper'
+import Plasma from '../../components/Plasma'
 import { H1 } from '../../components/Text'
 import Button from '../../components/Button'
 import IllustrationJumboBottom from '../../assets/svg/IllustrationJumboBottom.js'
 import withTheme from '../../theme'
 import IllustrationJumbo from '../../assets/svg/IllustrationJumbo.js'
+import IllustrationSun from '../../assets/svg/IllustrationSun.js'
+
 import {THEME_DARK, THEME_LIGHT} from '../../theme/constants'
 
 
@@ -39,9 +42,18 @@ const TextWrapper = styled('div')`
   margin: 0 auto;
 `
 
+const PlasmaWrapper = styled('div')`
+  position: absolute;
+  margin-top: 64px;
+  transform: translateX(-55%) translateY(-40%);
+`
+
 const Jumbotron = ( ) => {
     return (
         <Wrapper>
+            <PlasmaWrapper>
+                <IllustrationSun />
+            </PlasmaWrapper>
             <TextWrapper>
                 <ContentWrapper mt={160}>
                     <H1> Delivering efficient and clean <br/>

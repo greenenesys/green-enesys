@@ -13,7 +13,6 @@ const Wrapper = styled('div')`
   width: ${props => props.radius + props.radius * 0.2}px;
   height: ${props => props.radius + props.radius * 0.2}px;
   transition: all 2s linear;
-  filter: url('#goo');
   display: flex;
   justify-content: center;
   align-items: center;
@@ -67,8 +66,10 @@ class Plasma extends React.Component {
     render () {
         return (
             <Wrapper radius={this.props.radius}>
-                {balls.map((ball, index) => <Ball radius={this.props.radius} position={this.state.positions[index]} key={index + ball}/>)}
-                <div style={{ zIndex: 1 }}>
+                <div style={{filter: `url('#goo')`, position: 'absolute', left: 8, top: 8}}>
+                    {balls.map((ball, index) => <Ball radius={this.props.radius} position={this.state.positions[index]} key={index + ball}/>)}
+                </div>
+                <div style={{ zIndex: 1, }}>
                     {this.props.children}
                 </div>
             </Wrapper>
