@@ -19,6 +19,7 @@ const model = {
 const ProjectFactsWrapper = styled('div')`
   width: 100%;
   margin-top: 48px;
+  margin-bottom: 48px;
 `
 
 const ProjectFacts = ({ projectData }) => {

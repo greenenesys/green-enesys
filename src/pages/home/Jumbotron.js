@@ -4,7 +4,7 @@ import { ContentWrapper } from '../../components/Grid/ContentWrapper'
 import Plasma from '../../components/Plasma'
 import { H1 } from '../../components/Text'
 import Button from '../../components/Button'
-import IllustrationJumboBottom from '../../assets/svg/IllustrationJumboBottom.js'
+import IllustrationJumboBottom, { IllustrationMountain } from '../../assets/svg/IllustrationJumboBottom.js'
 import withTheme from '../../theme'
 import IllustrationJumbo from '../../assets/svg/IllustrationJumbo.js'
 import IllustrationSun from '../../assets/svg/IllustrationSun.js'
@@ -26,6 +26,11 @@ const IllustrationBottom = styled(IllustrationJumboBottom)`
 const Illustration = styled(IllustrationJumbo)`
   position: absolute;
   bottom: -15px;
+`
+
+const IllustrationBottomMountain = styled(IllustrationMountain)`
+  position: absolute;
+  top: 200px;
 `
 
 const Wrapper = styled('div')`
@@ -63,6 +68,7 @@ const Jumbotron = ( ) => {
             </TextWrapper>
             <IllustrationBackground />
             <IllustrationBottom />
+            <IllustrationBottomMountain />    
             <Illustration />
         </Wrapper>
     )

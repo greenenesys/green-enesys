@@ -42,5 +42,9 @@ export default {
             [THEME_DARK]: '#01977D',
             [THEME_LIGHT]: '#01977D',
         },
+        seperator: {
+            [THEME_DARK]: '#DADADA',
+            [THEME_LIGHT]: '#DADADA',
+        }
     }
 }

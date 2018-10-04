@@ -13,12 +13,18 @@ const InnerWrapper = styled('div')`
 `
 
 class Projects extends React.Component {
-    state = {
-        projects: [],
-        filteredProjects: [],
-        status: ['completed', 'construction', 'development'],
-        orderBy: 'country',
-        activeProjectId: null,
+
+    constructor (props) {
+        super(props)
+
+        this.status = ['completed', 'construction', 'development']
+        this.state = {
+            projects: [],
+            filteredProjects: [],
+            status: [...this.status],
+            orderBy: 'country',
+            activeProjectId: null,
+        }
     }
 
     componentWillMount() {
@@ -46,6 +52,20 @@ class Projects extends React.Component {
         this.setState({ activeProjectId: project.id })
     }
 
+    handleFilterClick = (filter) => {
+        console.log(filter)
+        console.log(this.state.status)
+        const { status } = this.state
+        const index = status.indexOf(filter)
+        console.log(index)
+        const states = [...status]
+        if (index === -1) this.setState({ status: [...states, filter] })
+        else {
+            states.splice(index, 1)
+            this.setState({ status: states })
+        }
+    }
+
     render () {
         console.log(this.activeProject)
         return (
@@ -53,6 +73,9 @@ class Projects extends React.Component {
                 <ContentWrapper mt={72}>
                     <InnerWrapper>
                         <SideBar
+                            onFilterChange={this.handleFilterClick}
+                            activeStatus={this.state.status}
+                            status={this.status}
                             router={this.props.match}
                             projects={this.projectsWithActiveStatus}
                             activeProject={this.activeProject}

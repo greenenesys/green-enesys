@@ -3,9 +3,10 @@ import styled from 'styled-components'
 import PropTypes from 'prop-types'
 import SideBarItem from './SideBarItem'
 import SideBarGroup from './SideBarGroup'
+import Filter from './Filter'
 
 const Wrapper = styled('div')`
-  width: 30%;
+  min-width: 30%;
   border-left: 1px solid rgba(0,0,0,0.1);
   border-right: 1px solid rgba(0,0,0,0.1);
   min-height: 800px;
@@ -58,6 +59,7 @@ class SideBar extends React.Component {
     render () {
         return (
             <Wrapper>
+                <Filter onChange={this.props.onFilterChange} status={this.props.status} activeStatus={this.props.activeStatus}/>
                 {this.renderItems()}
             </Wrapper>
         )
