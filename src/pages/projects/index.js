@@ -1,11 +1,10 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { getProjectsAPI } from '../../api'
-import { Paragraph, Description } from '../../components/Text'
 import styled from 'styled-components'
 import { ContentWrapper } from '../../components/Grid/ContentWrapper'
 import SideBar from './SideBar'
 import ProjectView from './ProjectView'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const InnerWrapper = styled('div')`
   display: flex;

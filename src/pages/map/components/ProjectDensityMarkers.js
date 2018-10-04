@@ -41,6 +41,7 @@ const ProjectMarkers = ({ markers, isVisible, onClick }) => {
                                         fontWeight: 500
                                     }}
                                 >
+                                    {console.log(markers)}
                                     {Math.floor(Math.random() * 10) + 4}
                                 </text>
                                 <Pie

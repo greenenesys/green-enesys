@@ -21,16 +21,18 @@ const IllustrationBackground = styled('div')`
 const IllustrationBottom = styled(IllustrationJumboBottom)`
     bottom: 0;
     position: absolute;
+    z-index: 5;
 `
 
 const Illustration = styled(IllustrationJumbo)`
   position: absolute;
   bottom: -15px;
+  z-index: 10;
 `
 
 const IllustrationBottomMountain = styled(IllustrationMountain)`
   position: absolute;
-  top: 200px;
+  top: 170px;
 `
 
 const Wrapper = styled('div')`

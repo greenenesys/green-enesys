@@ -18,6 +18,14 @@ const Wrapper = styled('div')`
   align-items: center;
 `
 
+const FallbackBubble = styled('div')`
+  width: ${props => props.radius}px;
+  height: ${props => props.radius}px;
+  background-color: ${ props => props.theme.color.ui.primary };
+  border-radius: 50%;
+  position: absolute;
+`
+
 const Ball = styled('div').attrs({
     style: props => ({
         transform: `translate(${props.position[0]}px, ${props.position[1]}px)`,
@@ -43,6 +51,7 @@ const createBallsArray = (numberOfBalls, radius) => {
 }
 
 const balls = createBallsArray(5)
+const isChrome = !!window.chrome && !!window.chrome.webstore;
 class Plasma extends React.Component {
     state = {
         path: paths[0],
@@ -66,9 +75,13 @@ class Plasma extends React.Component {
     render () {
         return (
             <Wrapper radius={this.props.radius}>
-                <div style={{filter: `url('#goo')`, position: 'absolute', left: 8, top: 8}}>
-                    {balls.map((ball, index) => <Ball radius={this.props.radius} position={this.state.positions[index]} key={index + ball}/>)}
-                </div>
+                {isChrome 
+                    ? <div style={{filter: `url('#goo')`, position: 'absolute', left: 8, top: 8}}>
+                        {balls.map((ball, index) => <Ball radius={this.props.radius} position={this.state.positions[index]} key={index + ball}/>)}
+                    </div>
+                    : <FallbackBubble radius={this.props.radius * 1.2} />
+                }
+            
                 <div style={{ zIndex: 1, }}>
                     {this.props.children}
                 </div>
