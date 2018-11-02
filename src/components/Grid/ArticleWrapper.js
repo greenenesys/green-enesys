@@ -3,10 +3,11 @@ import styled, { css } from 'styled-components'
 import { space } from 'styled-system'
 import media from '../../lib/media'
 
-export const ContentWrapper = styled('div')`
-    max-width: ${props => props.theme.spacing.contentMaxWidth};
+export const ArticleWrapper = styled('div')`
+    max-width: ${props => props.theme.spacing.articleMaxWidth};
     margin: 0 auto;
     padding-left: 24px;
+    position: relative;
     padding-right: 24px;
 
     ${media.tablet(css`

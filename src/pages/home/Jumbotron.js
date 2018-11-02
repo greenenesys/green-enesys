@@ -4,35 +4,36 @@ import { ContentWrapper } from '../../components/Grid/ContentWrapper'
 import Plasma from '../../components/Plasma'
 import { H1 } from '../../components/Text'
 import Button from '../../components/Button'
-import IllustrationJumboBottom, { IllustrationMountain } from '../../assets/svg/IllustrationJumboBottom.js'
+import IllustrationJumboBottom, {
+    IllustrationMountain,
+} from '../../assets/svg/IllustrationJumboBottom.js'
 import withTheme from '../../theme'
 import IllustrationJumbo from '../../assets/svg/IllustrationJumbo.js'
 import IllustrationSun from '../../assets/svg/IllustrationSun.js'
 
-import {THEME_DARK, THEME_LIGHT} from '../../theme/constants'
-
+import { THEME_DARK, THEME_LIGHT } from '../../theme/constants'
 
 const IllustrationBackground = styled('div')`
     width: 100%;
-    background-image: linear-gradient(-129deg, #21956E 0%, #82B86A 100%);
+    background-image: linear-gradient(-129deg, #21956e 0%, #82b86a 100%);
     height: 600px;
 `
 
 const IllustrationBottom = styled(IllustrationJumboBottom)`
     bottom: 0;
     position: absolute;
-    z-index: 5;
+    z-index: 1;
 `
 
 const Illustration = styled(IllustrationJumbo)`
-  position: absolute;
-  bottom: -15px;
-  z-index: 10;
+    position: absolute;
+    bottom: -15px;
+    z-index: 1;
 `
 
 const IllustrationBottomMountain = styled(IllustrationMountain)`
-  position: absolute;
-  top: 170px;
+    position: absolute;
+    top: 170px;
 `
 
 const Wrapper = styled('div')`
@@ -44,18 +45,18 @@ const Wrapper = styled('div')`
 `
 
 const TextWrapper = styled('div')`
-  position: absolute;
-  width: 100%;
-  margin: 0 auto;
+    position: absolute;
+    width: 100%;
+    margin: 0 auto;
 `
 
 const PlasmaWrapper = styled('div')`
-  position: absolute;
-  margin-top: 64px;
-  transform: translateX(-55%) translateY(-40%);
+    position: absolute;
+    margin-top: 64px;
+    transform: translateX(-55%) translateY(-40%);
 `
 
-const Jumbotron = ( ) => {
+const Jumbotron = () => {
     return (
         <Wrapper>
             <PlasmaWrapper>
@@ -63,14 +64,20 @@ const Jumbotron = ( ) => {
             </PlasmaWrapper>
             <TextWrapper>
                 <ContentWrapper mt={160}>
-                    <H1> Delivering efficient and clean <br/>
-                        energy for a sustainable planet. </H1>
-                    <Button mt={2}> Explore our projects </Button>
+                    <H1>
+                        {' '}
+                        Delivering efficient and clean <br />
+                        energy for a sustainable planet.{' '}
+                    </H1>
+                    <Button mt={2} route="/map">
+                        {' '}
+                        Explore our projects{' '}
+                    </Button>
                 </ContentWrapper>
             </TextWrapper>
             <IllustrationBackground />
             <IllustrationBottom />
-            <IllustrationBottomMountain />    
+            <IllustrationBottomMountain />
             <Illustration />
         </Wrapper>
     )

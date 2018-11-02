@@ -1,26 +1,26 @@
-import React, { Component } from "react"
-import Slider from "react-slick"
-import styled, {injectGlobal} from 'styled-components'
+import React, { Component } from 'react'
+import Slider from 'react-slick'
+import styled, { injectGlobal } from 'styled-components'
 import solar from '../../assets/images/solar.png'
 import { Description } from '../../components/Text'
 import { getProjectsAPI } from '../../api'
 
 const Item = styled('div')`
-  width: auto;
-  height: auto;
-  padding: 12px;
+    width: auto;
+    height: auto;
+    padding: 12px;
 `
 
 const Image = styled('img')`
-  width: auto;
-  height: 400px;
-  border-radius: 2px;
+    width: auto;
+    height: 400px;
+    border-radius: 2px;
 `
 
-const CarouselItem = ({ index, name, image, ...props}) => {
+const CarouselItem = ({ index, name, image, ...props }) => {
     return (
         <Item>
-            <Image src={image}/>
+            <Image src={image} />
             <Description> {name} </Description>
         </Item>
     )
@@ -28,7 +28,7 @@ const CarouselItem = ({ index, name, image, ...props}) => {
 
 export default class Carousel extends Component {
     state = {
-        projects: []
+        projects: [],
     }
 
     play = () => {
@@ -39,17 +39,17 @@ export default class Carousel extends Component {
         this.slider.slickPause()
     }
 
-    get projectsWithMedia () {
+    get projectsWithMedia() {
         const { projects } = this.state
         return projects.filter(project => project.data.media.length > 0)
     }
-    
-    componentWillMount () {
+
+    componentWillMount() {
         getProjectsAPI().then(res => {
             this.setState({ projects: res.results })
         })
     }
-    
+
     render() {
         const settings = {
             // dots: true,
@@ -61,18 +61,24 @@ export default class Carousel extends Component {
             slidesToScroll: 1,
             variableWidth: true,
             autoplay: true,
-            autoplaySpeed: 3000
+            autoplaySpeed: 2000,
         }
-        console.log(this.projectsWithMedia)
+        // console.log(this.projectsWithMedia)
         return (
             <div>
                 <Slider ref={slider => (this.slider = slider)} {...settings}>
-                    {this.projectsWithMedia.map((item) => {
+                    {this.projectsWithMedia.map(item => {
                         const { name, media } = item.data
-                        return <CarouselItem name={name} image={media[0].media_item} key={name}/>
+                        return (
+                            <CarouselItem
+                                name={name}
+                                image={media[0].media_item}
+                                key={name}
+                            />
+                        )
                     })}
                 </Slider>
             </div>
-        );
+        )
     }
 }
