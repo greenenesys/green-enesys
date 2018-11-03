@@ -20,7 +20,7 @@ export default class AboutPage extends React.Component {
             <div style={{ marginTop: '124px' }}>
                 <VideoWrapper>
                     <Video autoPlay loop>
-                        <source src="https://res.cloudinary.com/dyv4p67lk/video/upload/e_saturation:61,f_auto/v1540291061/Videos/Wooden%20Park/Sequence_02_30_SEC.mp4" />
+                        <source src="https://res.cloudinary.com/dyv4p67lk/video/upload/f_auto,q_auto/v1540291061/Videos/Wooden%20Park/Sequence_02_30_SEC.mp4" />
                     </Video>
                 </VideoWrapper>
                 <ArticleWrapper mt={5} mb={200}>
