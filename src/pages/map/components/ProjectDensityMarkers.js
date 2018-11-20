@@ -22,45 +22,7 @@ const fill = i => {
 }
 
 const ProjectMarkers = ({ markers, isVisible, onClick }) => {
-    return (
-        <Markers>
-            {markers.map((marker, i) => (
-                <Marker key={i} marker={marker} onClick={() => onClick(marker)}>
-                    <Spring to={{ opacity: isVisible ? 1 : 0 }}>
-                        {({ opacity }) => (
-                            <g>
-                                <text
-                                    textAnchor="middle"
-                                    y="4"
-                                    opacity={
-                                        marker.name === 'World' ? 0 : opacity
-                                    }
-                                    style={{
-                                        fontFamily: 'GT America, sans-serif',
-                                        fill: '#black',
-                                        fontSize: '11px',
-                                        fontWeight: 500,
-                                    }}
-                                >
-                                    {Math.floor(Math.random() * 10) + 4}
-                                </text>
-                                <Pie
-                                    data={browsers}
-                                    pieValue={d => d.usage}
-                                    outerRadius={marker.size}
-                                    innerRadius={marker.size - 20}
-                                    fill={d => fill(d.index)}
-                                    opacity={opacity}
-                                    cornerRadius={1}
-                                    padAngle={0}
-                                />
-                            </g>
-                        )}
-                    </Spring>
-                </Marker>
-            ))}
-        </Markers>
-    )
+    return null
 }
 
 export default ProjectMarkers

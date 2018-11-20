@@ -10,6 +10,9 @@ const fill = status => {
     return '#FFC539'
 }
 
+let newFlag = true
+let oldFlag = false
+
 const ProjectMarkers = ({
     markers,
     isVisible,
@@ -17,13 +20,17 @@ const ProjectMarkers = ({
     handleMouseLeave,
     handleClick,
 }) => {
+    const collideRadius = isVisible ? 0.3 : 0.9
     const simulation = forceSimulation(markers)
         .force('x', forceX(marker => marker.data.coordinates.longitude))
         .force('y', forceY(marker => marker.data.coordinates.latitude))
-        .force('collide', forceCollide(0.35))
+        .force('collide', forceCollide(collideRadius))
         .stop()
-        .tick()
 
+    if (newFlag !== isVisible) {
+        for (var i = 0; i < 120; ++i) simulation.tick()
+        newFlag = isVisible
+    }
     // .force('collide', forceCollide(4))
     return (
         <Markers>
@@ -74,7 +81,7 @@ const ProjectMarkers = ({
                         <Spring
                             to={{
                                 opacity: isVisible ? 1 : 0,
-                                radius: isVisible ? 4 : 0,
+                                radius: isVisible ? 4 : 14,
                             }}
                         >
                             {({ opacity, radius }) => (
@@ -90,9 +97,9 @@ const ProjectMarkers = ({
                                         }
                                         cx={0}
                                         cy={0}
-                                        r={4.5}
+                                        r={radius}
                                         fill={fill(marker.data.status)}
-                                        opacity={opacity}
+                                        // opacity={opacity}
                                         // stroke='#FFC539'
                                     />
                                 </g>
