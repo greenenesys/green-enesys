@@ -6,6 +6,7 @@ import { Description } from '../../components/Text'
 import { getProjectsAPI } from '../../api'
 import { Link } from 'react-router-dom'
 import { getCloudImageUrl } from '../../lib/util'
+import ArrowButton from '../../components/Button/ArrowButton'
 
 const Item = styled('div')`
     width: auto;
@@ -22,6 +23,25 @@ const Image = styled('img')`
 const CustomLink = styled(Link)`
     text-decoration: none;
 `
+
+const SlideArrow = ({ onClick, flip }) => {
+    const style = flip
+        ? {
+              display: 'inline-block',
+          }
+        : {
+              transform: 'rotate(180deg)',
+              display: 'inline-block',
+              marginLeft: '24px',
+          }
+    return (
+        <div style={style}>
+            <ArrowButton onClick={onClick} />
+        </div>
+    )
+}
+
+const ArrowContainer = styled('div')``
 
 const CarouselItem = ({ index, name, image, ...props }) => {
     return (
@@ -47,6 +67,14 @@ export default class Carousel extends Component {
         this.slider.slickPause()
     }
 
+    next = () => {
+        this.slider.slickNext()
+    }
+
+    prev = () => {
+        this.slider.slickPrev()
+    }
+
     get projectsWithMedia() {
         const { projects } = this.state
         const maxProjects = projects.length > 10 ? 10 : projects.length
@@ -66,7 +94,7 @@ export default class Carousel extends Component {
         const settings = {
             // dots: true,
             infinite: true,
-            slidesToShow: 1,
+            slidesToShow: 3,
             adaptiveHeight: true,
             arrows: false,
             centerMode: true,
@@ -78,6 +106,8 @@ export default class Carousel extends Component {
         // console.log(this.projectsWithMedia)
         return (
             <div>
+                <SlideArrow onClick={this.next} />
+                <SlideArrow onClick={this.prev} flip />
                 <Slider ref={slider => (this.slider = slider)} {...settings}>
                     {this.projectsWithMedia.map(item => {
                         const { name, media } = item.data

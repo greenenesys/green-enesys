@@ -43,6 +43,20 @@ class ProjectView extends React.Component {
     renderMedia = () => {
         const media = this.activeProject.data.media
         if (media.length < 1) return null
+        if (media.length < 2) {
+            if (media[0].media_item === null) return null
+            return (
+                <div>
+                    <img
+                        height="400"
+                        width="100%"
+                        key={media[0].media_item}
+                        alt={media[0].media_description}
+                        src={getCloudImageUrl(media[0].media_item)}
+                    />
+                </div>
+            )
+        }
 
         const mediaItems = () =>
             media.map(mediaItem => (
