@@ -3,6 +3,10 @@ import { ContentWrapper } from '../../components/Grid/ContentWrapper'
 import { H2, H3, H4, Paragraph } from '../../components/Text'
 
 export default class AboutPage extends React.Component {
+    componentDidMount = () => {
+        window.scrollTo(0, 0)
+    }
+
     render() {
         return (
             <ContentWrapper my={200}>

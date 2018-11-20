@@ -7,11 +7,14 @@ import Carousel from './Carousel'
 import Jumbotron from './Jumbotron'
 import Solutions from './Solutions'
 
-
 export default class HomePage extends React.Component {
-    render () {
+    componentDidMount = () => {
+        window.scrollTo(0, 0)
+    }
+
+    render() {
         return (
-            <div style={{marginBottom: '128px'}}>
+            <div style={{ marginBottom: '128px' }}>
                 <Jumbotron />
                 <PlasmaFigures />
                 <Carousel />
@@ -22,4 +25,3 @@ export default class HomePage extends React.Component {
         )
     }
 }
-

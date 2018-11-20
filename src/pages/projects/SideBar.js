@@ -6,10 +6,11 @@ import SideBarGroup from './SideBarGroup'
 import Filter from './Filter'
 
 const Wrapper = styled('div')`
-  min-width: 30%;
-  border-left: 1px solid rgba(0,0,0,0.1);
-  border-right: 1px solid rgba(0,0,0,0.1);
-  min-height: 800px;
+    min-width: 30%;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 72px);
+    overflow: scroll;
 `
 
 class SideBar extends React.Component {
@@ -18,17 +19,17 @@ class SideBar extends React.Component {
         groups: PropTypes.array,
         activeProject: PropTypes.object,
         handleProjectClick: PropTypes.func,
-        router: PropTypes.object
+        router: PropTypes.object,
     }
 
     static defaultProps = {
         projects: [],
         groups: [],
-        activeProjectId: ''
+        activeProjectId: '',
     }
 
     state = {
-        projects: this.props.projects
+        projects: this.props.projects,
     }
 
     renderItems = () => {
@@ -39,27 +40,36 @@ class SideBar extends React.Component {
                 <div key={'wrapper-' + group}>
                     <SideBarGroup> {group} </SideBarGroup>
                     <div>
-                        {projects.filter(project => project.data.country === group).map(project => {
-                            return (
-                                <SideBarItem
-                                    router={this.props.router}
-                                    project={project}
-                                    handleClick={this.props.handleProjectClick}
-                                    key={'item-' + project.id}>
-                                    {project.data.name}
-                                </SideBarItem>
-                            )
-                        })}
+                        {projects
+                            .filter(project => project.data.country === group)
+                            .map(project => {
+                                return (
+                                    <SideBarItem
+                                        router={this.props.router}
+                                        project={project}
+                                        handleClick={
+                                            this.props.handleProjectClick
+                                        }
+                                        key={'item-' + project.id}
+                                    >
+                                        {project.data.name}
+                                    </SideBarItem>
+                                )
+                            })}
                     </div>
                 </div>
             )
         })
     }
 
-    render () {
+    render() {
         return (
             <Wrapper>
-                <Filter onChange={this.props.onFilterChange} status={this.props.status} activeStatus={this.props.activeStatus}/>
+                <Filter
+                    onChange={this.props.onFilterChange}
+                    status={this.props.status}
+                    activeStatus={this.props.activeStatus}
+                />
                 {this.renderItems()}
             </Wrapper>
         )

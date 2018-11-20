@@ -41,7 +41,7 @@ const Footer = () => {
                     join our team!{' '}
                 </Paragraph>
             </ParagraphWrapper>
-            <StyledA href="mailto:jobs@greenenesys.com">
+            <StyledA href="mailto:info@greenenesys.com">
                 <Button mt={3}>Contact Us</Button>
             </StyledA>
         </Wrapper>

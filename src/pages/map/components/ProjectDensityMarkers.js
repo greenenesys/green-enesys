@@ -10,38 +10,38 @@ const browserUsage = {
     Firefox: '18.82',
 }
 
-const browsers = Object.keys(browserUsage).map(k => ({ label: k, usage: browserUsage[k] }));
+const browsers = Object.keys(browserUsage).map(k => ({
+    label: k,
+    usage: browserUsage[k],
+}))
 
-const fill = (i) => {
-    if (i === 1) return '#6d3aca'
-    if (i === 2) return '#35148e'
-    return '#14092d'
+const fill = i => {
+    if (i === 1) return '#FED779'
+    if (i === 2) return '#FFE7AD'
+    return '#FFC539'
 }
 
 const ProjectMarkers = ({ markers, isVisible, onClick }) => {
     return (
         <Markers>
             {markers.map((marker, i) => (
-                <Marker
-                    key={i}
-                    marker={marker}
-                    onClick={() => onClick(marker)}
-                >
+                <Marker key={i} marker={marker} onClick={() => onClick(marker)}>
                     <Spring to={{ opacity: isVisible ? 1 : 0 }}>
-                        {({ opacity }) =>
+                        {({ opacity }) => (
                             <g>
                                 <text
                                     textAnchor="middle"
                                     y="4"
-                                    opacity={marker.name === 'World' ? 0 : opacity}
+                                    opacity={
+                                        marker.name === 'World' ? 0 : opacity
+                                    }
                                     style={{
-                                        fontFamily: "GT America, sans-serif",
-                                        fill: "#black",
+                                        fontFamily: 'GT America, sans-serif',
+                                        fill: '#black',
                                         fontSize: '11px',
-                                        fontWeight: 500
+                                        fontWeight: 500,
                                     }}
                                 >
-                                    {console.log(markers)}
                                     {Math.floor(Math.random() * 10) + 4}
                                 </text>
                                 <Pie
@@ -55,7 +55,7 @@ const ProjectMarkers = ({ markers, isVisible, onClick }) => {
                                     padAngle={0}
                                 />
                             </g>
-                        }
+                        )}
                     </Spring>
                 </Marker>
             ))}

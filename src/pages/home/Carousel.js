@@ -4,6 +4,8 @@ import styled, { injectGlobal } from 'styled-components'
 import solar from '../../assets/images/solar.png'
 import { Description } from '../../components/Text'
 import { getProjectsAPI } from '../../api'
+import { Link } from 'react-router-dom'
+import { getCloudImageUrl } from '../../lib/util'
 
 const Item = styled('div')`
     width: auto;
@@ -17,11 +19,17 @@ const Image = styled('img')`
     border-radius: 2px;
 `
 
+const CustomLink = styled(Link)`
+    text-decoration: none;
+`
+
 const CarouselItem = ({ index, name, image, ...props }) => {
     return (
         <Item>
             <Image src={image} />
-            <Description> {name} </Description>
+            <Description stlyle={{ textDecoration: 'none' }}>
+                {name}
+            </Description>
         </Item>
     )
 }
@@ -41,7 +49,11 @@ export default class Carousel extends Component {
 
     get projectsWithMedia() {
         const { projects } = this.state
-        return projects.filter(project => project.data.media.length > 0)
+        const maxProjects = projects.length > 10 ? 10 : projects.length
+
+        return projects
+            .slice(1, maxProjects)
+            .filter(project => project.data.media.length > 1)
     }
 
     componentWillMount() {
@@ -69,12 +81,25 @@ export default class Carousel extends Component {
                 <Slider ref={slider => (this.slider = slider)} {...settings}>
                     {this.projectsWithMedia.map(item => {
                         const { name, media } = item.data
+                        const slug = item.slugs[0]
+                        console.log(item)
+
                         return (
-                            <CarouselItem
-                                name={name}
-                                image={media[0].media_item}
-                                key={name}
-                            />
+                            <CustomLink
+                                to={`projects/${slug}`}
+                                style={{
+                                    textDecoration: 'none',
+                                    textUnderlinePosition: '4px',
+                                }}
+                            >
+                                <CarouselItem
+                                    name={name}
+                                    image={getCloudImageUrl(
+                                        media[0].media_item
+                                    )}
+                                    key={name}
+                                />
+                            </CustomLink>
                         )
                     })}
                 </Slider>

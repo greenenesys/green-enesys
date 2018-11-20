@@ -5,11 +5,16 @@
  * @return {Object}
  */
 export function position(el) {
-    if (el === null) return { left: 0}
+    if (el === null) return { left: 0 }
 
     const pos = el.getBoundingClientRect()
     const { pageYOffset, pageXOffset } = window
-    const { scrollTop, clientTop, scrollLeft, clientLeft } = document.documentElement
+    const {
+        scrollTop,
+        clientTop,
+        scrollLeft,
+        clientLeft,
+    } = document.documentElement
     const winTop = (pageYOffset || scrollTop) - clientTop
     const winLeft = (pageXOffset || scrollLeft) - clientLeft
 
@@ -34,18 +39,25 @@ export function dimension(el) {
     return { width: rect.width, height: rect.height }
 }
 
-
 /**
  * Checks if the given DOM element is a DOM node.
  *
  * @param {Object} el - DOM element.
  * @return {Boolean}
  */
-export function isDOM (el) {
-    return (!el || typeof el !== 'object')
+export function isDOM(el) {
+    return !el || typeof el !== 'object'
         ? false
-        : (typeof window === 'object' && typeof window.Node === 'object')
-            ? (el instanceof window.Node)
-            : (typeof el.nodeType === 'number') &&
-            (typeof el.nodeName === 'string')
+        : typeof window === 'object' && typeof window.Node === 'object'
+        ? el instanceof window.Node
+        : typeof el.nodeType === 'number' && typeof el.nodeName === 'string'
+}
+
+export function getCloudImageUrl(link) {
+    const transforms = 'c_scale,f_auto,h_600,q_auto'
+    const finalLink = link.split('/')
+    const index = finalLink.findIndex(el => el === 'upload')
+    return [...finalLink.splice(0, index + 1), transforms, ...finalLink].join(
+        '/'
+    )
 }
