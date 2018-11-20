@@ -50,6 +50,7 @@ class Map extends Component {
         zoom: 0.75,
         area: 'World',
         projects: null,
+        flag: true,
         hoveredProjectNode: document.getElementById('root'),
         hoveredProjectData: {
             data: {
@@ -96,6 +97,10 @@ class Map extends Component {
         this.props.history.push(`/projects/${marker.slugs[0]}`)
     }
 
+    toggleMarkerSimulation = () => {
+        this.setState({ flag: !this.state.flag })
+    }
+
     componentWillMount() {
         getProjectsAPI().then(res => {
             this.setState({ projects: res.results })
@@ -114,14 +119,10 @@ class Map extends Component {
                         {this.state.hoveredProjectData !== null && (
                             <div>
                                 <Paragraph strip fontWeight={'medium'}>
-                                    {' '}
-                                    {
-                                        this.state.hoveredProjectData.data.name
-                                    }{' '}
+                                    {this.state.hoveredProjectData.data.name}
                                 </Paragraph>
                                 <Description strip mt={-1}>
-                                    {' '}
-                                    Click for more details{' '}
+                                    Click for more details
                                 </Description>
                             </div>
                         )}
@@ -156,6 +157,7 @@ class Map extends Component {
                                     ProjectMarkers({
                                         markers: this.state.projects,
                                         isVisible: zoom > 1,
+                                        flag: this.state.flag,
                                         handleClick: this.handleProjectClick,
                                         handleMouseEnter: this
                                             .handleMarkerMouseEnter,

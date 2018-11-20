@@ -10,8 +10,7 @@ const fill = status => {
     return '#FFC539'
 }
 
-let newFlag = true
-let oldFlag = false
+let oldFlag
 
 const ProjectMarkers = ({
     markers,
@@ -19,6 +18,7 @@ const ProjectMarkers = ({
     handleMouseEnter,
     handleMouseLeave,
     handleClick,
+    flag,
 }) => {
     const collideRadius = isVisible ? 0.3 : 0.9
     const simulation = forceSimulation(markers)
@@ -27,9 +27,9 @@ const ProjectMarkers = ({
         .force('collide', forceCollide(collideRadius))
         .stop()
 
-    if (newFlag !== isVisible) {
+    if (flag !== oldFlag) {
         for (var i = 0; i < 120; ++i) simulation.tick()
-        newFlag = isVisible
+        oldFlag = !flag
     }
     // .force('collide', forceCollide(4))
     return (
