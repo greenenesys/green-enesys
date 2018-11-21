@@ -29,14 +29,8 @@ const areas = [
     { name: 'Europe', coordinates: [11.582, 45.1351], size: 30, zoom: 5 },
     { name: 'Africa', coordinates: [25.582, -10.1351], size: 30, zoom: 4 },
     {
-        name: 'Latin America',
-        coordinates: [78.9629, 20.5937],
-        size: 30,
-        zoom: 4,
-    },
-    {
-        name: 'South America',
-        coordinates: [78.9629, 20.5937],
+        name: 'Central America',
+        coordinates: [-85.6024, 12.769],
         size: 30,
         zoom: 4,
     },
