@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import RouterLink from '../RouterLink'
 import { ContentWrapper } from '../Grid/ContentWrapper'
 import logo from '../../assets/images/logo.png'
+import { Link } from 'react-router-dom'
 
 const Wrapper = styled('div')`
     height: 72px;
@@ -48,7 +49,9 @@ const Navigation = ({ routes }) => {
     return (
         <Wrapper>
             <ContentWrapper>
-                <Logo />
+                <Link to={'/'}>
+                    <Logo />
+                </Link>
                 <RouterLinkWrapper>
                     {renderRouterLinks(routes)}
                 </RouterLinkWrapper>

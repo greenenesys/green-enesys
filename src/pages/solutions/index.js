@@ -22,7 +22,7 @@ const ImageWrapper = styled('div')`
 
 const Wrapper = styled('div')`
     display: flex;
-    margin-top: 64px;
+    margin-top: 54px;
     flex-direction: row;
     justify-content: center;
     align-items: center;
@@ -34,8 +34,7 @@ const Wrapper = styled('div')`
 export default () => {
     window.scrollTo(0, 0)
     return (
-        <ContentWrapper mt={7} mb={6}>
-            <H2>Solutions</H2>
+        <ContentWrapper mt={6} mb={6}>
             <Wrapper>
                 <ImageWrapper>
                     <Image src={imageWaste} />

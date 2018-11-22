@@ -7,7 +7,7 @@ const Terms = props => {
 
     return (
         <ArticleWrapper>
-            <H2 mt={7}>Terms Of Use</H2>
+            <H2 mt={6}>Terms Of Use</H2>
             <Paragraph>
                 USER AGREEMENT BETWEEN USER AND GREEN ENESYS GROUP GMBH
             </Paragraph>

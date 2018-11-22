@@ -27,6 +27,7 @@ class Projects extends React.Component {
 
     componentWillMount() {
         getProjectsAPI().then(res => {
+            console.log(res)
             this.setState({
                 projects: res.results,
                 filteredProjects: res.results,

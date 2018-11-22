@@ -11,7 +11,8 @@ const getProjectsAPI = async params => {
         const response = await API.query(
             Prismic.Predicates.at('document.type', 'project'),
             {
-                ...params
+                ...params,
+                pageSize: 100,
                 // params will be extra parameters we can pass through with api calls
                 // such as how many documents to return
             }
