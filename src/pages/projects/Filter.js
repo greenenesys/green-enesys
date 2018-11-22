@@ -13,9 +13,7 @@ const SidebarItemWrapper = styled('div')`
     padding: 0 16px;
     height: 76px;
     overflow: hidden;
-    position: sticky;
     background-color: white;
-    top: 0;
 `
 
 const FilterWrapper = styled('div')`
