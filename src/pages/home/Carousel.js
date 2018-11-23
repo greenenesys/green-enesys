@@ -80,8 +80,8 @@ export default class Carousel extends Component {
         const maxProjects = projects.length > 10 ? 10 : projects.length
 
         return projects
-            .slice(1, maxProjects)
             .filter(project => project.data.media.length > 1)
+            .slice(1, maxProjects)
     }
 
     componentWillMount() {
