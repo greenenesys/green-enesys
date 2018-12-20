@@ -27,7 +27,7 @@ const TooltipWrapper = styled('div')`
 const areas = [
     { name: 'World', coordinates: [0, 20], size: 0, zoom: 0.75 },
     { name: 'Europe', coordinates: [11.582, 45.1351], size: 30, zoom: 5 },
-    { name: 'Africa', coordinates: [2.3185, 19.5687], size: 30, zoom: 4 },
+    { name: 'Africa', coordinates: [8.7185, 3.5687], size: 30, zoom: 2 },
     {
         name: 'Central America',
         coordinates: [-85.6024, 12.769],

@@ -53,6 +53,8 @@ const Links = () => {
                 <br />
                 <BottomLink to="/impressum">Impressum</BottomLink>
                 <br />
+                <BottomLink to="/terms">Terms</BottomLink>
+                <br />
             </Paragraph>
         </SectionWrapper>
     )

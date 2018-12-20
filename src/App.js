@@ -59,12 +59,6 @@ const routes = [
         exact: true,
     },
     {
-        path: '/terms',
-        component: TermsPage,
-        name: 'Terms',
-        exact: true,
-    },
-    {
         path: '/impressum',
         component: ImpressumPage,
         name: 'Impressum',

@@ -1,4 +1,4 @@
-import {injectGlobal} from 'styled-components'
+import { injectGlobal } from 'styled-components'
 import GTAmericaMedium from './assets/fonts/GTAmerica-Medium.woff'
 import GTAmericaMediumWOFF2 from './assets/fonts/GTAmerica-Medium.woff2'
 
@@ -394,5 +394,31 @@ template {
 .page-transition-exit-active {
   opacity: 0;
   transition: opacity 200ms ease-in;
+}
+
+/**
+ * Slick Slider classes
+ */
+.slick-dots {
+  list-style: none;
+  padding: 0;
+  margin-top: 4px;
+  > li {
+    display: inline-block;
+    margin-right: 8px;
+    cursor: pointer;
+  }
+}
+
+.slick-active {
+  > * > img {
+    transition: all 0.2 ease-in-out;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1), 0 2px 6px rgba(0,0,0,0.2);
+    transform: scale(1.2);
+  }
+}
+
+.slick-thumb {
+
 }
 `

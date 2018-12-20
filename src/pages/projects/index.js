@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { ContentWrapper } from '../../components/Grid/ContentWrapper'
 import SideBar from './SideBar'
 import ProjectView from './ProjectView'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
 
 const InnerWrapper = styled('div')`
     display: flex;
@@ -22,19 +22,21 @@ class Projects extends React.Component {
             status: [...this.status],
             orderBy: 'country',
             activeProjectId: null,
+            activeProject: null,
         }
     }
 
     componentWillMount() {
         getProjectsAPI().then(res => {
-            console.log(res)
             this.setState({
                 projects: res.results,
                 filteredProjects: res.results,
-                activeProjectId: res.results[0].id,
+                activeProject: res.results[0],
             })
         })
     }
+
+    componentDidUpdate = (prevProps, prevState) => {}
 
     componentDidMount = () => {
         window.scrollTo(0, 0)
@@ -67,16 +69,9 @@ class Projects extends React.Component {
         return this.state.projects.find(project => project.slugs[0] === slug)
     }
 
-    handleProjectClick = project => {
-        this.setState({ activeProjectId: project.id })
-    }
-
     handleFilterClick = filter => {
-        console.log(filter)
-        console.log(this.state.status)
         const { status } = this.state
         const index = status.indexOf(filter)
-        console.log(index)
         const states = [...status]
         if (index === -1) this.setState({ status: [...states, filter] })
         else {
@@ -86,7 +81,6 @@ class Projects extends React.Component {
     }
 
     render() {
-        console.log(this.activeProject)
         return (
             <Router>
                 <ContentWrapper mt={72}>
@@ -98,17 +92,38 @@ class Projects extends React.Component {
                             router={this.props.match}
                             projects={this.projectsWithActiveStatus}
                             activeProject={this.activeProject}
-                            handleProjectClick={this.handleProjectClick}
+                            handleProjectClick={() => ''}
                             groups={this.groups}
                         />
+
                         <Route
-                            path={`${this.props.match.url}/:slug`}
+                            path={`${this.props.match.url}`}
+                            exact={true}
                             render={props => (
-                                <ProjectView
-                                    slug={props.match.params.slug}
-                                    projects={this.state.projects}
+                                <Redirect
+                                    to={`${this.props.match.url}/badia`}
                                 />
                             )}
+                        />
+
+                        <Route
+                            path={`${this.props.match.url}/:slug`}
+                            render={props => {
+                                const activeProject = this.state.filteredProjects.find(
+                                    project => {
+                                        return (
+                                            project.slugs[0] ===
+                                            props.match.params.slug
+                                        )
+                                    }
+                                )
+                                return (
+                                    <ProjectView
+                                        activeProject={activeProject}
+                                        history={this.props.history}
+                                    />
+                                )
+                            }}
                         />
                     </InnerWrapper>
                 </ContentWrapper>

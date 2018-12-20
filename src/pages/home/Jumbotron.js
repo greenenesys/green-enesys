@@ -13,16 +13,16 @@ import IllustrationSun from '../../assets/svg/IllustrationSun.js'
 
 import { THEME_DARK, THEME_LIGHT } from '../../theme/constants'
 
-const IllustrationBackground = styled('div')`
+export const IllustrationBackground = styled('div')`
     width: 100%;
     background-image: linear-gradient(-129deg, #21956e 0%, #82b86a 100%);
     height: 600px;
 `
 
-const IllustrationBottom = styled(IllustrationJumboBottom)`
+export const IllustrationBottom = styled(IllustrationJumboBottom)`
     bottom: 0;
     position: absolute;
-    z-index: 1;
+    z-index: 0;
 `
 
 const Illustration = styled(IllustrationJumbo)`
@@ -31,12 +31,12 @@ const Illustration = styled(IllustrationJumbo)`
     z-index: 1;
 `
 
-const IllustrationBottomMountain = styled(IllustrationMountain)`
+export const IllustrationBottomMountain = styled(IllustrationMountain)`
     position: absolute;
     top: 170px;
 `
 
-const Wrapper = styled('div')`
+export const Wrapper = styled('div')`
     display: flex;
     position: relative;
     align-content: center;

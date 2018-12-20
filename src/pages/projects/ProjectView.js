@@ -12,8 +12,8 @@ const Wrapper = styled('div')`
     width: 70%;
 `
 
-const sliderSettings = {
-    // dots: true,
+let sliderSettings = {
+    dots: true,
     lazyLoad: true,
     infinite: true,
     speed: 500,
@@ -23,25 +23,16 @@ const sliderSettings = {
     autoplay: true,
     autoplaySpeed: 5000,
     arrows: false,
+    dotsClass: 'slick-dots slick-thumb',
 }
 
 class ProjectView extends React.Component {
     static propTypes = {
-        projects: PropTypes.array,
-    }
-
-    static defaultProps = {
-        projects: [],
-    }
-
-    get activeProject() {
-        return this.props.projects.find(
-            project => project.slugs[0] === this.props.slug
-        )
+        activeProject: PropTypes.object,
     }
 
     renderMedia = () => {
-        const media = this.activeProject.data.media
+        const media = this.props.activeProject.data.media
         if (media.length < 1) return null
         if (media.length < 2) {
             if (media[0].media_item === null) return null
@@ -70,16 +61,27 @@ class ProjectView extends React.Component {
                     />
                 </div>
             ))
+
+        sliderSettings.customPaging = i => {
+            return (
+                <a>
+                    <img
+                        src={getCloudImageUrl(media[i].media_item)}
+                        width={40}
+                    />
+                </a>
+            )
+        }
         return <Slider {...sliderSettings}>{mediaItems()}</Slider>
     }
+
     renderProject = () => {
         return (
             <div style={{ width: '100%' }}>
                 <H2 strip mb={4}>
-                    {' '}
-                    {this.activeProject.data.name}{' '}
+                    {this.props.activeProject.data.name}
                 </H2>
-                <ProjectFacts projectData={this.activeProject.data} />
+                <ProjectFacts projectData={this.props.activeProject.data} />
                 {this.renderMedia()}
             </div>
         )
@@ -88,9 +90,7 @@ class ProjectView extends React.Component {
     render() {
         return (
             <Wrapper ml={4} mt={4} mb={6}>
-                {this.props.projects && this.props.projects.length > 1
-                    ? this.renderProject()
-                    : null}
+                {this.props.activeProject ? this.renderProject() : null}
             </Wrapper>
         )
     }

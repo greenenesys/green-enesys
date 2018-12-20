@@ -51,8 +51,6 @@ const Left = styled('div')`
 `
 
 const renderFilterItems = (items, activeItems, onChange) => {
-    console.log(items, activeItems)
-
     const getItemName = itemName => {
         if (itemName === 'completed') return itemName
         else if (itemName === 'construction') return 'Under Construction'
