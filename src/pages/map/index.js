@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { ComposableMap, ZoomableGroup } from 'react-simple-maps'
 import { Wrapper } from './styles'
 import { Spring } from 'react-spring'
-import mapData from '../../../src/assets/maps/world-110m'
+import mapData from '../../../src/assets/maps/continents'
 import { ProjectMarkers, ProjectDensityMarkers, Geo, Waves } from './components'
 import { getProjectsAPI } from '../../api'
 import Tab from './components/Tab'
@@ -91,6 +91,10 @@ class Map extends Component {
         this.props.history.push(`/projects/${marker.slugs[0]}`)
     }
 
+    handleContinentClick = continentName => {
+        this.handleAreaClick(areas.find(area => area.name === continentName))
+    }
+
     toggleMarkerSimulation = () => {
         this.setState({ flag: !this.state.flag })
     }
@@ -141,7 +145,10 @@ class Map extends Component {
                             style={{ width: '100%', height: 'auto' }}
                         >
                             <ZoomableGroup center={[x, y]} zoom={zoom}>
-                                {Geo({ geography: mapData })}
+                                {Geo({
+                                    geography: mapData,
+                                    onClick: this.handleContinentClick,
+                                })}
                                 {ProjectDensityMarkers({
                                     markers: areas,
                                     isVisible: zoom <= 1,

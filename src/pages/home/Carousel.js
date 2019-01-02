@@ -30,7 +30,7 @@ const SlideArrow = ({ onClick, flip }) => {
               display: 'inline-block',
           }
         : {
-              transform: 'rotate(180deg)',
+              transform: 'rotate(180deg) translateY(-6px)',
               display: 'inline-block',
               marginLeft: '24px',
           }
@@ -106,8 +106,10 @@ export default class Carousel extends Component {
         // console.log(this.projectsWithMedia)
         return (
             <div>
-                <SlideArrow onClick={this.next} />
-                <SlideArrow onClick={this.prev} flip />
+                <div style={{ margin: '0 auto', display: 'inline-block' }}>
+                    <SlideArrow onClick={this.next} />
+                    <SlideArrow onClick={this.prev} flip />
+                </div>
                 <Slider ref={slider => (this.slider = slider)} {...settings}>
                     {this.projectsWithMedia.map(item => {
                         const { name, media } = item.data

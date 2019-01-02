@@ -9,6 +9,7 @@ import imgTrash from '../../assets/images/solutions_trash.png'
 import imgContainerHeat from '../../assets/images/solutions_container_heat.png'
 import imgContainerBattery from '../../assets/images/solutions_container_batteries.png'
 import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 
 const Tooltip = styled(ReactTooltip)`
     background-color: white !important;
@@ -119,8 +120,8 @@ class Solutions extends React.Component {
                         {this.content.heading}
                     </H4>
                 </Tooltip>
-                <Link to={'/solutions'}>
-                    <IllustrationWrapper>
+                <IllustrationWrapper>
+                    <HashLink to={'solutions#waste-to-power'} smooth>
                         <Factory
                             data-tip
                             active={active === 'factory' || active === 'none'}
@@ -131,6 +132,8 @@ class Solutions extends React.Component {
                             }
                             onMouseLeave={() => this.handleMouseEnter('none')}
                         />
+                    </HashLink>
+                    <HashLink to={'solutions#photovoltaic'} smooth>
                         <Photo
                             data-tip
                             active={active === 'photo' || active === 'none'}
@@ -138,6 +141,8 @@ class Solutions extends React.Component {
                             onMouseEnter={() => this.handleMouseEnter('photo')}
                             onMouseLeave={() => this.handleMouseEnter('none')}
                         />
+                    </HashLink>
+                    <HashLink to={'solutions#waste'} smooth>
                         <Trash
                             data-tip
                             active={active === 'trash' || active === 'none'}
@@ -145,6 +150,8 @@ class Solutions extends React.Component {
                             onMouseLeave={() => this.handleMouseEnter('none')}
                             src={imgTrash}
                         />
+                    </HashLink>
+                    <HashLink to={'solutions#electrical-storage'} smooth>
                         <ContainerBattery
                             data-tip
                             active={active === 'battery' || active === 'none'}
@@ -154,6 +161,8 @@ class Solutions extends React.Component {
                             onMouseLeave={() => this.handleMouseEnter('none')}
                             src={imgContainerBattery}
                         />
+                    </HashLink>
+                    <HashLink to={'solutions#thermal-storage'} smooth>
                         <ContainerHeat
                             data-tip
                             active={active === 'heat' || active === 'none'}
@@ -161,8 +170,8 @@ class Solutions extends React.Component {
                             onMouseLeave={() => this.handleMouseEnter('none')}
                             src={imgContainerHeat}
                         />
-                    </IllustrationWrapper>
-                </Link>
+                    </HashLink>
+                </IllustrationWrapper>
             </ContentWrapper>
         )
     }

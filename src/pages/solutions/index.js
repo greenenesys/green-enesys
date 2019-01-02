@@ -35,7 +35,7 @@ export default () => {
     window.scrollTo(0, 0)
     return (
         <ContentWrapper mt={6} mb={6}>
-            <Wrapper>
+            <Wrapper id={'waste'}>
                 <ImageWrapper>
                     <Image src={imageWaste} />
                 </ImageWrapper>
@@ -54,7 +54,7 @@ export default () => {
                     </Paragraph>
                 </div>
             </Wrapper>
-            <Wrapper>
+            <Wrapper id={'waste-to-power'}>
                 <ImageWrapper>
                     <Image src={imageFactory} />
                 </ImageWrapper>
@@ -74,7 +74,7 @@ export default () => {
                     </Paragraph>
                 </div>
             </Wrapper>
-            <Wrapper>
+            <Wrapper id={'photovoltaic'}>
                 <ImageWrapper>
                     <Image src={imagePV} />
                 </ImageWrapper>
@@ -94,7 +94,7 @@ export default () => {
                     </Paragraph>
                 </div>
             </Wrapper>
-            <Wrapper>
+            <Wrapper id={'electrical-storage'}>
                 <ImageWrapper>
                     <Image src={imageBattery} />
                 </ImageWrapper>
@@ -108,7 +108,7 @@ export default () => {
                     </Paragraph>
                 </div>
             </Wrapper>
-            <Wrapper>
+            <Wrapper id={'thermal-storage'}>
                 <ImageWrapper>
                     <Image src={imageHeat} />
                 </ImageWrapper>
