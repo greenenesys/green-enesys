@@ -21,6 +21,10 @@ const VideoWrapper = styled('div')`
     max-width: 1080px;
     margin: 0 auto;
     z-index: 200;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -60px;
 `
 
 const ContentWrapper = styled('div')`
@@ -44,15 +48,25 @@ export default class AboutPage extends React.Component {
                 </Wrapper>
                 <ContentWrapper>
                     <VideoWrapper>
-                        <Video autoPlay loop>
+                        <H2
+                            align={'center'}
+                            pb={5}
+                            style={{
+                                color: 'white',
+                                position: 'absolute',
+                                zIndex: 10,
+                                maxWidth: '600px',
+                                fontWeight: 600,
+                            }}
+                        >
+                            Delivering clean and efficient energy for a
+                            sustainable planet.
+                        </H2>
+                        <Video autoPlay loop style={{ zIndex: 4 }}>
                             <source src="https://res.cloudinary.com/dyv4p67lk/video/upload/f_auto,q_auto/v1540291061/Videos/Wooden%20Park/Sequence_02_30_SEC.mp4" />
                         </Video>
                     </VideoWrapper>
-                    <ArticleWrapper mt={5} mb={200}>
-                        <H3 fontStyle={'italic'} align={'center'} pb={5}>
-                            "Delivering efficient and clean energy for a
-                            sustainable planet"
-                        </H3>
+                    <ArticleWrapper mt={6} mb={200}>
                         <H2>About Green Enesys </H2>
                         <Paragraph>
                             The core business of Green Enesys is to develop
