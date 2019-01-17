@@ -27,9 +27,7 @@ const VideoWrapper = styled('div')`
     margin-top: -60px;
 `
 
-const ContentWrapper = styled('div')`
-    transform: translateY(-400px);
-`
+const ContentWrapper = styled('div')``
 
 const Plant = styled('img')``
 
@@ -40,8 +38,10 @@ export default class AboutPage extends React.Component {
 
     render() {
         return (
-            <div style={{ marginTop: '64px' }}>
-                <Wrapper>
+            <div style={{ marginTop: '260px' }}>
+                <Wrapper
+                    style={{ position: 'absolute', top: 0, width: '100%' }}
+                >
                     <IllustrationBackground />
                     <IllustrationBottom />
                     <IllustrationBottomMountain />

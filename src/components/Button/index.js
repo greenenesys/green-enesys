@@ -34,6 +34,7 @@ const ButtonWrapper = styled('div')`
     padding: 0 2rem;
     user-select: none;
     z-index: 200;
+    font-weight: 600;
 
     color: ${props => props.theme.color.ui.secondary};
     letter-spacing: 1.5px;

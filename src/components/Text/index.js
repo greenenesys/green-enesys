@@ -52,7 +52,7 @@ const Label = styled('p')`
     color: rgba(0, 0, 0, 0.49);
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-weight: 500;
+    font-weight: 600;
 `
 
 const Description = styled(Paragraph)`
