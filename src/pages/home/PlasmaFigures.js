@@ -23,8 +23,8 @@ const figures = [
     },
     {
         name: 'Installed Capacity',
-        value: 34496,
-        unit: 'mw',
+        value: 193.9,
+        unit: 'MWp',
         illustration: IllustrationCapacity
     },
     {
@@ -64,6 +64,7 @@ const Figure = ({ data }) => {
 const electricityProducedinMWh = () => (7.19066270294266*(Math.pow(10, -6))*Date.now()-9959186.48152054).toFixed(2)
 const co2AvoidedinKg = () =>  (0.00235760808127219*(Date.now())-(3.23577458463368 * 10^(9))).toFixed(2)
 
+
 class PlasmaFigures extends React.PureComponent {
 
     state = {
@@ -94,9 +95,9 @@ class PlasmaFigures extends React.PureComponent {
     render () { 
         return (
             <Wrapper my={6}>
-                <Figure data={{...figures[0], value: this.state.electricityProducedinMWh}} key={figures[0].name}/>
+                <Figure id='el' data={{...figures[0], value: this.state.electricityProducedinMWh}} key={figures[0].name}/>
                 <Figure data={figures[1]} key={figures[1].name}/>
-                <Figure data={{...figures[2], value: this.state.co2AvoidedinKg}} key={figures[2].name}/>
+                <Figure id='co' data={{...figures[2], value: this.state.co2AvoidedinKg}} key={figures[2].name}/>
             </Wrapper>
         )
     }

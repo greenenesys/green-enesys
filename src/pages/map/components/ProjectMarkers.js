@@ -6,12 +6,18 @@ import { forceSimulation, forceX, forceCollide, forceY } from 'd3-force'
 
 const fill = status => {
     if (status === 'Planned') return '#FED779'
-    if (status === 'Development') return '#FFE7AD'
+    if (status === 'Development') return '#FFC539'
     return '#FFC539'
 }
 
 let oldFlag
 
+const getValue = (factor) => {
+    console.log(factor)
+    if (factor > 4) return 4
+    if (factor > 2) return 20
+    else return 14
+}
 const ProjectMarkers = ({
     markers,
     isVisible,
@@ -19,6 +25,7 @@ const ProjectMarkers = ({
     handleMouseLeave,
     handleClick,
     flag,
+    zoom
 }) => {
     const collideRadius = isVisible ? 0.3 : 0.9
     const simulation = forceSimulation(markers)
@@ -81,7 +88,7 @@ const ProjectMarkers = ({
                         <Spring
                             to={{
                                 opacity: isVisible ? 1 : 0,
-                                radius: isVisible ? 4 : 14,
+                                radius: getValue(zoom),
                             }}
                         >
                             {({ opacity, radius }) => (

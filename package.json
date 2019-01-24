@@ -6,6 +6,7 @@
         "@vx/group": "^0.0.170",
         "@vx/pattern": "^0.0.165",
         "@vx/shape": "^0.0.176",
+        "animejs": "^3.0.1",
         "d3-force": "^1.1.2",
         "gl-react": "^3.15.0",
         "gl-react-dom": "^3.15.0",

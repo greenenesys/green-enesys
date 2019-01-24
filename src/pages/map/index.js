@@ -158,6 +158,7 @@ class Map extends Component {
                                     ProjectMarkers({
                                         markers: this.state.projects,
                                         isVisible: zoom > 1,
+                                        zoom: this.state.zoom,
                                         flag: this.state.flag,
                                         handleClick: this.handleProjectClick,
                                         handleMouseEnter: this
