@@ -30,7 +30,7 @@ const figures = [
     {
         name: 'Co2 reduction',
         value: 15042,
-        unit: 't',
+        unit: 'kg',
         illustration: IllustrationReduction
     }
 ]
@@ -61,12 +61,47 @@ const Figure = ({ data }) => {
     )
 }
 
-const PlasmaFigures = () => {
-    return (
-        <Wrapper my={6}>
-            {figures.map(figure => <Figure data={figure} key={figure.name}/>)}
-        </Wrapper>
-    )
+const electricityProducedinMWh = () => (7.19066270294266*(Math.pow(10, -6))*Date.now()-9959186.48152054).toFixed(2)
+const co2AvoidedinKg = () =>  (0.00235760808127219*(Date.now())-(3.23577458463368 * 10^(9))).toFixed(2)
+
+class PlasmaFigures extends React.PureComponent {
+
+    state = {
+        electricityProducedinMWh: electricityProducedinMWh(),
+        co2AvoidedinKg: co2AvoidedinKg()
+    }
+
+    componentDidMount = () => {
+        const intervalId = setInterval(this.timer, 1000)
+
+        this.setState({
+            intervalId
+        })
+    }
+    
+    componentWillUnmount = () => {
+        clearInterval(this.state.intervalId)
+    }
+    
+    timer = () => {
+        this.setState({
+            electricityProducedinMWh: electricityProducedinMWh(),
+            co2AvoidedinKg: co2AvoidedinKg()
+        })
+    }
+    
+
+    render () { 
+        return (
+            <Wrapper my={6}>
+                <Figure data={{...figures[0], value: this.state.electricityProducedinMWh}} key={figures[0].name}/>
+                <Figure data={figures[1]} key={figures[1].name}/>
+                <Figure data={{...figures[2], value: this.state.co2AvoidedinKg}} key={figures[2].name}/>
+            </Wrapper>
+        )
+    }
+
 }
+
 
 export default PlasmaFigures
