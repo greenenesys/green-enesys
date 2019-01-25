@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Plasma from '../../components/Plasma'
 import { ContentWrapper } from '../../components/Grid'
 import { H3, Label } from '../../components/Text'
+import numeral from 'numeral'
 
 import IllustrationGeneration from '../../assets/svg/IllustrationGeneration.js'
 import IllustrationCapacity from '../../assets/svg/IllustrationCapacity.js'
@@ -16,9 +17,9 @@ const Wrapper = styled(ContentWrapper)`
 
 const figures = [
     {
-        name: 'Energy Generation',
+        name: 'Power Generated',
         value: 30224,
-        unit: 'mwh',
+        unit: 'MWh',
         illustration: IllustrationGeneration
     },
     {
@@ -28,9 +29,9 @@ const figures = [
         illustration: IllustrationCapacity
     },
     {
-        name: 'Co2 reduction',
+        name: 'Co2 avoided',
         value: 15042,
-        unit: 'kg',
+        unit: 't',
         illustration: IllustrationReduction
     }
 ]
@@ -61,8 +62,9 @@ const Figure = ({ data }) => {
     )
 }
 
-const electricityProducedinMWh = () => (7.19066270294266*(Math.pow(10, -6))*Date.now()-9959186.48152054).toFixed(2)
-const co2AvoidedinKg = () =>  (0.00235760808127219*(Date.now())-(3.23577458463368 * 10^(9))).toFixed(2)
+const electricityProducedinMWh = () => numeral((7.19066270294266*(Math.pow(10, -6))*Date.now()-1.0075845676726*Math.pow(10, 7))).format('0,0.00')
+const co2AvoidedinKg = () =>  numeral((0.00235760808127219*(Date.now())-(3.23839798726656 * Math.pow(10, 9)))* .001).format('0,0.00')
+
 
 
 class PlasmaFigures extends React.PureComponent {
