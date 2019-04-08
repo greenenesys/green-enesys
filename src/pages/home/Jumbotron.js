@@ -66,8 +66,7 @@ const Jumbotron = () => {
                 <ContentWrapper mt={160}>
                     <H1>
                         {' '}
-                        Delivering efficient and clean <br />
-                        energy for a sustainable planet.{' '}
+                        Delivering clean and affordable energy <br /> for a sustainable planet.{' '}
                     </H1>
                     <Button mt={2} route="/map">
                         {' '}
