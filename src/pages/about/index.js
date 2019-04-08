@@ -59,8 +59,7 @@ export default class AboutPage extends React.Component {
                                 fontWeight: 600,
                             }}
                         >
-                            Delivering clean and efficient energy for a
-                            sustainable planet.
+                            Delivering clean and affordable energy for a sustainable planet.
                         </H2>
                         <Video autoPlay loop style={{ zIndex: 4 }}>
                             <source src="https://res.cloudinary.com/dyv4p67lk/video/upload/f_auto,q_auto/v1540291061/Videos/Wooden%20Park/Sequence_02_30_SEC.mp4" />
