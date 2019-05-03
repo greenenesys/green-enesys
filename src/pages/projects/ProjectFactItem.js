@@ -1,12 +1,23 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import media from '../../lib/media'
 import { Paragraph } from '../../components/Text'
 
 const ProjectFactItemWrapper = styled('div')`
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+`
+
+const ParagraphUpdate = styled(Paragraph)`
+  font-size: 14px;
+  font-weight: 400;
+
+  ${media.desktop(css`
+    font-size:1.1em;
+  `)}
 `
 
 const Line = styled('span')`
@@ -18,9 +29,9 @@ const Line = styled('span')`
 const ProjectFactItem = ({ valueKey, value }) => {
     return (
         <ProjectFactItemWrapper>
-            <Paragraph pr={3} strip>{valueKey}</Paragraph>
+        <ParagraphUpdate pr={3} strip>{valueKey}</ParagraphUpdate>
             <Line />
-            <Paragraph pl={3} strip>{value}</Paragraph>
+        <ParagraphUpdate pl={3} strip>{value}</ParagraphUpdate>
         </ProjectFactItemWrapper>
     )
 }

@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import media from '../../lib/media'
 import { ContentWrapper } from '../../components/Grid/ContentWrapper'
 import { Paragraph, H3 } from '../../components/Text'
 import ArrowButton from '../../components/Button/ArrowButton'
@@ -11,27 +12,92 @@ import { Link } from 'react-router-dom'
 
 import { space } from 'styled-system'
 
+const ContentWra1pper = styled(ContentWrapper)`{
+dsf
+}`
+
+
+
+const ParagraphStyle2 = styled(Paragraph)`
+    font-size: 14px;
+    line-height: 26px;
+    ${media.tablet(css`
+        font-size: 0.91em;
+        line-height: 1.8;
+    `)};
+
+    ${media.desktop(css`
+        font-size: 1.1em;
+        line-height: 1.625;
+    `)};
+`
+
 const CenterArticle = styled('div')`
-    margin: 0 auto;
-    margin-top: 64px;
-    max-width: 700px;
+    font-size: 14px;
+    max-width: 565px;
+    margin: 40px 0;
+
+    ${media.tablet(css`
+        font-size: 14px;
+        max-width: 565px;
+        margin: 65px 0;
+    `)};
+    
+    ${media.desktop(css`
+        margin: 0 auto;
+        margin-top: 64px;
+        max-width: 700px;
+	`)};
+
+
 `
 
 const Half = styled('div')`
     display: inline-block;
-    width: calc(100% * (5 / 12) - 16px);
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 35px;
+
+     ${media.tablet(css`
+        width: calc(50% - 16px);
+        max-width: 999px;
+        margin-bottom: 0;
+    `)};
+    
+    ${media.desktop(css`
+         width: calc(100% * (5 / 12) - 16px);
+	`)};
 `
 
 const IllustrationProjectDevelopment = styled('img')`
     height: auto;
-    width: calc(100% * (6.5 / 12) - 16px);
+    width: 207px;
+
+     ${media.tablet(css`
+        width: calc(50% - 16px);
+    `)};
+    
+    ${media.desktop(css`
+        width: calc(100% * (6.5 / 12) - 16px);
+	`)};
 `
 
 const Wrapper = styled('div')`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    ${space};
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    margin-bottom: 25px;
+
+    ${media.tablet(css`
+        flex-direction: row;
+    `)};
+
+    ${media.desktop(css`
+        width: 100%;
+        ${space};
+	`)};
 `
 
 const ProjectDevelopment = () => {
@@ -40,7 +106,7 @@ const ProjectDevelopment = () => {
             <IllustrationProjectDevelopment src={imgProjectDevelopment} />
             <Half>
                 <H3> Project Development </H3>
-                <Paragraph>
+                <ParagraphStyle2>
                     In House Project Development in selected markets. Green
                     Enesys started out as a project developer and over the
                     years, has developed strong cooperation with local project
@@ -48,7 +114,7 @@ const ProjectDevelopment = () => {
                     strong network of project developers, EPC contractors that
                     we collaborate with on the project development activities
                     within the renewable energy sector.
-                </Paragraph>
+                </ParagraphStyle2>
             </Half>
         </Wrapper>
     )
@@ -57,42 +123,90 @@ const ProjectDevelopment = () => {
 const SmallWrapper = styled('div')`
     display: flex;
     align-items: center;
-    ${space};
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    margin-bottom: 18px;
+
+    ${media.tablet(css`
+        margin-top: 45px;
+        flex-direction: row;
+        margin-bottom: 0;
+    `)};
+    
+    ${media.desktop(css`
+        ${space};
+	`)};
+`
+const SmallWrapper2 = styled(SmallWrapper)`
+    flex-direction: column;
+
+     ${media.tablet(css`
+        flex-direction: row;
+	`)};
 `
 
 const IllustrationFinancing = styled('img')`
     height: auto;
-    width: calc(100% * (4 / 12) - 16px);
-    ${space};
+    width: 220px;
+    margin-left: 30px;
+
+    ${media.tablet(css`
+        margin-left: 30px;
+	`)};
+    ${media.desktop(css`
+        margin-left: 128px;
+        width: 310px;
+        ${space};
+	`)};
 `
 
 const IllustrationHolding = styled('img')`
-    height: auto;
-    width: 214px;
-    ${space};
+    width: 165px;
+
+    ${media.tablet(css`
+        width: 162px;
+        margin: 0 auto;
+        padding-top: 0;
+	`)};
+    ${media.desktop(css`
+        height: auto;
+        width: 214px;
+        padding-top: 16px;
+        margin-left: 128px;
+        ${space};
+	`)};
 `
 
 const IllustrationManaging = styled('img')`
-    height: auto;
-    width: 250px;
-    ${space};
+   
+
+    width: 200px;
+
+    
+    ${media.tablet(css`
+        width: 200px;
+        margin: 0 auto;
+	`)};
+    ${media.desktop(css`
+        height: auto;
+        width: 250px;
+        ${space};
+	`)};
+   
 `
 
 const Financing = () => {
     return (
-        <SmallWrapper mt={6}>
+        <SmallWrapper2 mt={6}>
             <Half>
-                <H3> Financing </H3>
-                <Paragraph>
-                    The management team of Green Enesys has strong financial
-                    markets background, and a proven track record in financing
-                    projects. We have expertise in arranging innovative project
-                    financing structures, both short-term and long-term, with
-                    the help of our financing partners.
-                </Paragraph>
+                <H3>Financing & Construction</H3>
+                <ParagraphStyle2>
+                    Strong finencial markets background and a proven track record in financing projects.
+                    Cooperation with international technology and construction partners.
+                </ParagraphStyle2>
             </Half>
             <IllustrationFinancing src={imgFinancing} ml={6} pt={3} />
-        </SmallWrapper>
+        </SmallWrapper2>
     )
 }
 
@@ -102,11 +216,11 @@ const Managing = () => {
             <IllustrationManaging src={imgManaging} mr={6} pt={3} />
             <Half>
                 <H3> Asset Management </H3>
-                <Paragraph>
+                <ParagraphStyle2>
                     In house asset management arm with infrastructure in
                     international markets. Network of O&amp;M service providers
                     with a strong local presence.
-                </Paragraph>
+                </ParagraphStyle2>
             </Half>
         </SmallWrapper>
     )
@@ -114,17 +228,17 @@ const Managing = () => {
 
 const Hold = () => {
     return (
-        <SmallWrapper mt={104}>
+        <SmallWrapper2 mt={104}>
             <Half>
                 <H3> Exit and Hold </H3>
-                <Paragraph>
+                <ParagraphStyle2>
                     Track Record with reported investors in the renewable energy
                     sector. Green Enesys act as the end investor for its
                     project.
-                </Paragraph>
+                </ParagraphStyle2>
             </Half>
             <IllustrationHolding src={imgHolding} ml={6} pt={3} />
-        </SmallWrapper>
+        </SmallWrapper2>
     )
 }
 
@@ -132,7 +246,7 @@ const AboutUs = () => {
     return (
         <ContentWrapper>
             <CenterArticle>
-                <Paragraph>
+                <ParagraphStyle2>
                     {' '}
                     Green Enesys was established in 2009 and over the last 9
                     years has <strong>developed</strong>,{' '}
@@ -142,7 +256,7 @@ const AboutUs = () => {
                     projects around the world, we are always looking at new
                     technologies that generate electricity in a clean and
                     efficient manner.
-                </Paragraph>
+                </ParagraphStyle2>
                 <Link to={'/about'}>
                     <ArrowButton> Read More </ArrowButton>
                 </Link>

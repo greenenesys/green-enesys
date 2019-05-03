@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Slider from 'react-slick'
-import styled, { injectGlobal } from 'styled-components'
+import styled, { injectGlobal, css  } from 'styled-components'
+import media from '../../lib/media'
 import solar from '../../assets/images/solar.png'
 import { Description } from '../../components/Text'
 import { getProjectsAPI } from '../../api'
@@ -8,16 +9,27 @@ import { Link } from 'react-router-dom'
 import { getCloudImageUrl } from '../../lib/util'
 import ArrowButton from '../../components/Button/ArrowButton'
 
+
 const Item = styled('div')`
     width: auto;
     height: auto;
-    padding: 12px;
+    padding: 15px;
 `
 
 const Image = styled('img')`
-    width: auto;
-    height: 400px;
+    width: 100%;
+    height: auto;
     border-radius: 2px;
+    margin: 0 auto;
+
+    ${media.tablet(css`
+        height: 165px;
+        width: auto;
+    `)};
+    ${media.desktop(css`
+        height: 228px;
+        width: auto;
+	`)};
 `
 
 const CustomLink = styled(Link)`
@@ -32,7 +44,6 @@ const SlideArrow = ({ onClick, flip }) => {
         : {
               transform: 'rotate(180deg) translateY(-6px)',
               display: 'inline-block',
-              marginLeft: '24px',
           }
     return (
         <div style={style}>
@@ -41,7 +52,18 @@ const SlideArrow = ({ onClick, flip }) => {
     )
 }
 
-const ArrowContainer = styled('div')``
+
+const ArrowContainer = styled('div')`
+    margin: -40px auto 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 25px;
+
+    ${media.tablet(css`
+        margin: -30px auto 0;
+    `)};
+`
 
 const CarouselItem = ({ index, name, image, ...props }) => {
     return (
@@ -92,8 +114,6 @@ export default class Carousel extends Component {
 
     render() {
         const settings = {
-            // dots: true,
-            infinite: true,
             slidesToShow: 3,
             adaptiveHeight: true,
             arrows: false,
@@ -101,20 +121,25 @@ export default class Carousel extends Component {
             slidesToScroll: 1,
             variableWidth: true,
             autoplay: true,
-            autoplaySpeed: 2000,
+            autoplaySpeed: 5000000,
+            responsive: [{
+
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    adaptiveHeight: true,
+                    centerMode: false,
+                    variableWidth: false,
+                }
+            }]
         }
-        // console.log(this.projectsWithMedia)
         return (
             <div>
-                <div style={{ margin: '0 auto', display: 'inline-block' }}>
-                    <SlideArrow onClick={this.next} />
-                    <SlideArrow onClick={this.prev} flip />
-                </div>
+                
                 <Slider ref={slider => (this.slider = slider)} {...settings}>
                     {this.projectsWithMedia.map(item => {
                         const { name, media } = item.data
                         const slug = item.slugs[0]
-                        console.log(item)
 
                         return (
                             <CustomLink
@@ -135,6 +160,10 @@ export default class Carousel extends Component {
                         )
                     })}
                 </Slider>
+                <ArrowContainer>
+                    <SlideArrow onClick={this.next} />
+                    <SlideArrow onClick={this.prev} flip />
+                </ArrowContainer>
             </div>
         )
     }

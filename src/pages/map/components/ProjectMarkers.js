@@ -1,6 +1,6 @@
 import React from 'react'
 import { Markers, Marker } from 'react-simple-maps'
-import { Spring } from 'react-spring'
+import {Spring} from 'react-spring/renderprops'
 import { Link } from 'react-router-dom'
 import { forceSimulation, forceX, forceCollide, forceY } from 'd3-force'
 
@@ -13,7 +13,6 @@ const fill = status => {
 let oldFlag
 
 const getValue = (factor) => {
-    console.log(factor)
     if (factor > 4) return 4
     if (factor > 2) return 20
     else return 14
@@ -48,7 +47,6 @@ const ProjectMarkers = ({
                         preserveMarkerAspect={false}
                         data-tip="hello world"
                         onMouseDown={() => {
-                            console.log('clicked')
                         }}
                         marker={{
                             marker,

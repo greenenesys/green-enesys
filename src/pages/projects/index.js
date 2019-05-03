@@ -1,15 +1,35 @@
 import React from 'react'
 import { getProjectsAPI } from '../../api'
-import styled from 'styled-components'
 import { ContentWrapper } from '../../components/Grid/ContentWrapper'
 import SideBar from './SideBar'
 import ProjectView from './ProjectView'
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom'
+import styled, { css } from 'styled-components'
+import media from '../../lib/media'
 
 const InnerWrapper = styled('div')`
+    flex-direction: column;
     display: flex;
-    flex-direction: row;
+
+    ${media.tablet(css`
+        flex-direction: row;
+    `)}
 `
+
+
+const ContentWrapperUpdate = styled(ContentWrapper)`
+    margin-top: 64px;
+    padding: 0;
+    ${media.tablet(css`
+    `)}
+    
+    ${media.desktop(css`
+        margin-top: 72px;
+        padding: 0 32px;
+    `)}
+`    
+
+
 
 class Projects extends React.Component {
     constructor(props) {
@@ -83,7 +103,7 @@ class Projects extends React.Component {
     render() {
         return (
             <Router>
-                <ContentWrapper mt={72}>
+                <ContentWrapperUpdate mt={72}>
                     <InnerWrapper>
                         <SideBar
                             onFilterChange={this.handleFilterClick}
@@ -126,7 +146,7 @@ class Projects extends React.Component {
                             }}
                         />
                     </InnerWrapper>
-                </ContentWrapper>
+                </ContentWrapperUpdate>
             </Router>
         )
     }

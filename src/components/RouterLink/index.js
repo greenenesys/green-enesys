@@ -1,19 +1,47 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import { NavLink } from 'react-router-dom'
+import styled, { css } from 'styled-components'
+import media from '../../lib/media'
 import baseStyle from '../Text/baseStyle'
 import { bool } from 'prop-types'
 
-const RouterLink = styled(Link)`
+const RouterLink = styled(NavLink)`
   ${baseStyle};
   text-decoration: none;
-  line-height: 72px;
-  padding-left: 24px;
-  opacity: ${props => props.opacity}
+  margin-bottom: 10px;
+  font-size: 25px;
+  font-weight: 700;
+  &.active{
+    color: #23b893;
+
+    ${media.tablet(css`
+      opacity: 1;
+      color: inherit;
+    `)};
+  }
+
+  ${media.tablet(css`
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 14px;
+    padding-left: 18px;
+    opacity: .6;
+    font-weight: 400;
+    opacity: ${props => props.opacity}
+   
+  `)};
+  
+  ${media.desktop(css`
+    font-size: 18px;
+    padding-left: 24px;
+`)};
 `
 
-RouterLink.propTypes = {
-    active: bool
+
+function handleClickClose(e){
+  let $this = e.currentTarget;
+  let allLink = $this.parentNode.childNodes;
+  $this.parentNode.parentNode.classList.remove('open');
 }
 
-export default ({ name, path, active }) => <RouterLink to={path} opacity={active ? 1 : 0.6}> {name} </RouterLink>
+export default ({ name, path, active }) => <RouterLink exact={active} data-active={active?'true':'false'} opacity={active?1:.6}  onClick={handleClickClose} to={path}> {name} </RouterLink>

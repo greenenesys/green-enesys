@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import media from '../../lib/media'
 import PropTypes from 'prop-types'
 
 const paths = [
@@ -10,20 +11,40 @@ const paths = [
 
 const Wrapper = styled('div')`
   position: relative;
-  width: ${props => props.radius + props.radius * 0.2}px;
-  height: ${props => props.radius + props.radius * 0.2}px;
+  width: 40px;
+  height: 40px;
   transition: all 2s linear;
   display: flex;
   justify-content: center;
   align-items: center;
+
+  ${media.tablet(css`
+    width: 55px;
+    height: 55px;
+    `)};
+
+    ${media.desktop(css`
+        width: ${props => props.radius + props.radius * 0.2}px;
+        height: ${props => props.radius + props.radius * 0.2}px;
+    `)};
 `
 
 const FallbackBubble = styled('div')`
-  width: ${props => props.radius}px;
-  height: ${props => props.radius}px;
+  width: 40px;
+  height: 40px;
   background-color: ${ props => props.theme.color.ui.primary };
   border-radius: 50%;
   position: absolute;
+
+  ${media.tablet(css`
+        width: 50px;
+        height: 50px;
+    `)};
+
+    ${media.desktop(css`
+        width: ${props => props.radius}px;
+        height: ${props => props.radius}px;
+    `)};
 `
 
 const Ball = styled('div').attrs({

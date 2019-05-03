@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import media from '../../lib/media'
 import PropTypes from 'prop-types'
 import { H2, H3 } from '../../components/Text'
 import { space } from 'styled-system'
@@ -7,23 +8,54 @@ import ProjectFacts from './ProjectFacts'
 import Slider from 'react-slick'
 import { getCloudImageUrl } from '../../lib/util'
 
+const ImgWrap = styled('img')`
+    height:auto;
+    ${media.desktop(css`
+        height: 400px;
+    `)}
+`
+
+const H2Update = styled(H2)`
+    font-size: 23px;
+    font-weight: 400;
+
+    ${media.tablet(css`
+        font-size: 30px;
+    `)}
+    ${media.desktop(css`
+        font-weight: 300;
+        font-size: 2.5em;
+    `)}
+`
+
 const Wrapper = styled('div')`
-    ${space};
-    width: 70%;
+width: 100%;
+padding: 30px 15px 0 15px;
+
+    ${media.tablet (css`
+        padding: 30px 15px 0 25px;
+        width: calc(100% - 275px);
+    `)}
+
+    ${media.desktop(css`
+        padding: 0;
+        ${space};
+        width: 70%;
+    `)}
 `
 
 let sliderSettings = {
     dots: true,
     lazyLoad: true,
-    infinite: true,
-    speed: 500,
+    speed: 500, infinite:false,
     slidesToShow: 1,
     slidesToScroll: 1,
     initialSlide: 2,
     autoplay: true,
-    autoplaySpeed: 5000,
+    autoplaySpeed: 5000000,
     arrows: false,
-    dotsClass: 'slick-dots slick-thumb',
+    dotsClass: 'slick-dots slick-thumb',  
+    adaptiveHeight: true,
 }
 
 class ProjectView extends React.Component {
@@ -51,8 +83,8 @@ class ProjectView extends React.Component {
 
         const mediaItems = () =>
             media.map(mediaItem => (
-                <div>
-                    <img
+                <div key={mediaItem}>
+                    <ImgWrap
                         height="400"
                         width="100%"
                         key={mediaItem.media_item}
@@ -76,11 +108,17 @@ class ProjectView extends React.Component {
     }
 
     renderProject = () => {
+        let items = document.getElementsByClassName('contry');
+        if (items.length){
+            for(let i = 0; i<items.length;i++){
+                items[i].innerHTML = this.props.activeProject.data.country;
+            }
+        }
         return (
             <div style={{ width: '100%' }}>
-                <H2 strip mb={4}>
+                <H2Update strip mb={4}>
                     {this.props.activeProject.data.name}
-                </H2>
+                </H2Update>
                 <ProjectFacts projectData={this.props.activeProject.data} />
                 {this.renderMedia()}
             </div>

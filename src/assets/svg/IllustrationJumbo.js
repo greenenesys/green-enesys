@@ -2,8 +2,10 @@ import React from "react";
 
 const IllustrationJumbo = props => (
   <svg
+    id="home-swg"
     width={1118}
     height={328}
+    viewBox="0 0 1118 328"
     xmlnsXlink="http://www.w3.org/1999/xlink"
     {...props}
   >

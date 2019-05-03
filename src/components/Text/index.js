@@ -1,10 +1,19 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 import baseStyles from './baseStyle'
+import media from '../../lib/media'
 
 const H1 = styled('h1')`
     ${baseStyles};
-    font-size: 2.5em;
+    font-size: 18px;
+
+    ${media.tablet(css`
+        font-size: 28px;
+    `)};
+
+    ${media.desktop(css`
+        font-size: 2.5em;
+    `)};
 `
 
 const H2 = styled('h2')`
@@ -15,8 +24,15 @@ const H2 = styled('h2')`
 
 const H3 = styled('h3')`
     ${baseStyles};
-    font-size: 25px;
     font-weight: 400;
+
+    ${media.tablet(css`
+        font-size: 22px;
+    `)};
+    
+    ${media.desktop(css`
+        font-size: 25px;
+    `)};
 `
 
 const H4 = styled('h4')`
@@ -47,12 +63,20 @@ const Paragraph = styled('p')`
 
 const Label = styled('p')`
     ${baseStyles};
-    font-size: 14px;
     display: inherit;
     color: rgba(0, 0, 0, 0.49);
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 600;
+    font-size: 10px;
+
+     ${media.tablet(css`
+        font-size: 10px;
+    `)};
+    
+    ${media.desktop(css`
+        font-size: 14px;
+    `)};
 `
 
 const Description = styled(Paragraph)`

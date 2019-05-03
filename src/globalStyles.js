@@ -1,6 +1,8 @@
 import { injectGlobal } from 'styled-components'
 import GTAmericaMedium from './assets/fonts/GTAmerica-Medium.woff'
 import GTAmericaMediumWOFF2 from './assets/fonts/GTAmerica-Medium.woff2'
+import MaisonNeueMedium from './assets/fonts/MaisonNeue-Medium.woff'
+import MaisonNeueMediumWOF2 from './assets/fonts/MaisonNeue-Medium.woff2'
 
 import GTAmericaRegular from './assets/fonts/GTAmerica-Regular.woff'
 import GTAmericaRegularWOFF2 from './assets/fonts/GTAmerica-Regular.woff2'
@@ -17,6 +19,13 @@ export default injectGlobal`
  */
 
 @font-face {
+  font-family: 'test';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans');
+}
+
+@font-face {
     font-family: 'GT America';
     src: url(${GTAmericaMediumWOFF2}) format('woff2'),
         url(${GTAmericaMedium}) format('woff');
@@ -25,9 +34,17 @@ export default injectGlobal`
 }
 
 @font-face {
-    font-family: 'GT America';
-    src: url(${GTAmericaRegular}) format('woff2'),
-        url(${GTAmericaRegularWOFF2}) format('woff');
+  font-family: 'GT America';
+  src: url(${GTAmericaMediumWOFF2}) format('woff2'),
+      url(${GTAmericaMedium}) format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'MaisonNeue';
+    src: url(${MaisonNeueMedium}) format('woff2'),
+        url(${MaisonNeueMediumWOF2}) format('woff');
     font-weight: normal;
     font-style: normal;
 }
@@ -421,4 +438,46 @@ template {
 .slick-thumb {
 
 }
+
+
+@media (max-width: 64em){
+  #icon-1{
+    height: auto;
+    width: 28px;
+    margin-top: 5px;
+  }
+  #icon-2{
+    height: auto;
+    width: 20px;
+  }
+  #icon-3{
+    height: auto;
+    width: 26px;
+  }
+
+  [data-id=tooltip]>h4{
+    font-size: 14px;
+    margin: 5px;
+  }
+}
+@media (max-width: 48em){
+  #icon-1{
+    height: auto;
+    width: 24px;
+  }
+  #icon-2{
+    height: auto;
+    width: 16px;
+  }
+  #icon-3{
+    height: auto;
+    width: 23px;
+  }
+
+  [data-id=tooltip]{
+    display: none;
+  }
+}
+
+
 `

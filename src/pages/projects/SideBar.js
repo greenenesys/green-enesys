@@ -1,19 +1,128 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import media from '../../lib/media'
 import PropTypes from 'prop-types'
 import SideBarItem from './SideBarItem'
 import SideBarGroup from './SideBarGroup'
 import Filter from './Filter'
+import CloseIcon from '../../assets/images/close.png'
+import ArrowBack from '../../assets/images/arrow-back.png'
 
-const Wrapper = styled('div')`
-    min-width: 30%;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
-    height: calc(100vh - 72px);
-    overflow: scroll;
+const СountryWrapper = styled('div')   `
+    ${media.tablet(css`
+        display: none;
+    `)}
 `
 
+const GroupContent = styled('div')`
+    position: relative;
+`
+
+    
+
+const Wrapper = styled('div')`
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    min-width: 275px;
+    
+    ${media.tablet(css`
+        overflow: scroll;
+        height: calc(100vh - 72px);
+    `)}
+    ${media.desktop(css`
+        min-width: 30%;
+    `)}
+`
+
+const FilterWrapper = styled(Wrapper)``
+
+const ItemWrapper = styled('div')`
+    height:0;
+    overflow: hidden;
+     position: absolute;
+     top:0 ;
+     left:0;
+     width: 100%;
+     background: #fff;
+
+    ${media.tablet(css`
+        position: static;
+    `)}
+
+    .open>&{
+        height:100%;
+        ${media.tablet(css`
+            height:auto;
+        `)}
+    }
+`
+
+const Back = styled('div')`
+    display: none;
+    align-items: center;
+    justify-content: space-between;
+    width: 70px;
+
+    .open-city &{
+        display: flex;
+    }
+
+    
+`
+
+const ItemGroup = styled('div')`
+    display: block;
+    position: fixed;
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    visibility: hidden;
+    opacity: 0;
+    height: 100vh;
+    overflow: scroll;
+    z-index: 10000;
+    background: #fff;
+
+    .mobile-open &{
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    ${media.tablet(css`
+        overflow: auto;
+        height:auto;
+        position: static;
+        opacity: 1;
+        visibility: visible;
+    `)}
+`
+
+const HeadGroup = styled('div')`
+    height: 60px;
+    padding: 0 15px;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+    font-family: 'Fira Sans','GT America','Fira Sans','Acumin Pro',-apple-system,Roboto,sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+
+    ${media.tablet(css`
+       display: none;
+    `)}
+`
+const HeadTitle = styled('div')`
+     .open-city &{
+        display: none;
+    }
+`
+const Close = styled('img')``
+
 class SideBar extends React.Component {
+    static propTypes = {
+        activeProject: PropTypes.object,
+    }
     static propTypes = {
         projects: PropTypes.array,
         groups: PropTypes.array,
@@ -32,18 +141,41 @@ class SideBar extends React.Component {
         projects: this.props.projects,
     }
 
-    renderItems = () => {
-        const { groups, projects } = this.props
+    closeMobileMenu = (e) => {
+        let target = document.getElementById('filter');
+        target.classList.remove('mobile-open');
+    }
+    backHandler = (e) => {
+        let target = document.getElementById('filter');
+        if (target) {
+            target.classList.remove('open-city');
+            let opener = document.getElementById('filter').getElementsByClassName('item-group');
+                for (let i = 0; i < opener.length; i++) {
+                    opener[i].classList.remove('open');
+                }
+            opener=false;
+        }
+        
+    }
 
+ 
+
+    
+
+    renderItems = () => {
+        const { groups, projects, activeProject } = this.props
         return groups.map(group => {
             return (
-                <div key={'wrapper-' + group}>
-                    <SideBarGroup> {group} </SideBarGroup>
-                    <div>
+                
+                <div key={'wrapper-' + group} className={'item-group'}>
+                
+                    <SideBarGroup > {group} </SideBarGroup>
+                    <ItemWrapper>
                         {projects
                             .filter(project => project.data.country === group)
                             .map(project => {
                                 return (
+                                    
                                     <SideBarItem
                                         router={this.props.router}
                                         project={project}
@@ -56,23 +188,36 @@ class SideBar extends React.Component {
                                     </SideBarItem>
                                 )
                             })}
-                    </div>
+                    </ItemWrapper>
                 </div>
             )
         })
     }
 
     render() {
+
         return (
-            <Wrapper>
+            <FilterWrapper id={'filter'}>
                 <Filter
                     onChange={this.props.onFilterChange}
                     status={this.props.status}
                     activeStatus={this.props.activeStatus}
-                />
-                {this.renderItems()}
-            </Wrapper>
+                    activeProject={this.props.activeProject}
+            />
+                <ItemGroup>
+                    <HeadGroup>
+                        <HeadTitle>Filter</HeadTitle>
+                        <Back onClick={this.backHandler.bind(this)}><Close src={ArrowBack}></Close>City</Back>
+                        <Close src={CloseIcon} onClick={this.closeMobileMenu.bind(this)}></Close>
+                    </HeadGroup>
+                    <GroupContent>
+                        {this.renderItems()}
+                    </GroupContent>
+                </ItemGroup>
+            </FilterWrapper>
         )
+        
+        
     }
 }
 

@@ -1,7 +1,7 @@
 import React from "react";
 
 const IllustrationCapacity = props => (
-  <svg width={27} height={43} {...props}>
+  <svg width={27} height={43} id='icon-2' viewBox="0 0 27 43" {...props}>
     <g fillRule="nonzero" fill="none">
       <path
         d="M7.464 5.07V3.567A3.014 3.014 0 0 1 10.482.558h6.036a3.014 3.014 0 0 1 3.018 3.008v1.505H21.8c2.5 0 4.527 2.021 4.527 4.513v28.584a4.521 4.521 0 0 1-4.527 4.513H5.2a4.521 4.521 0 0 1-4.527-4.513V9.584A4.521 4.521 0 0 1 5.2 5.071h2.264z"

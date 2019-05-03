@@ -1,15 +1,21 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import media from '../../../lib/media'
 import DefaultTab from '../../../components/Tab'
 import { space } from 'styled-system'
 
 const Wrapper = styled('div')`
   width: 100%;
   position: absolute;
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   bottom: 0;
+
+  ${media.tablet(css`
+    display: flex;
+  `)};
+
   ${space};
 `
 

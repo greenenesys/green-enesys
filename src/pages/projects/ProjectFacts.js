@@ -1,7 +1,22 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import media from '../../lib/media'
 import { Paragraph, H3, H4 } from '../../components/Text'
 import ProjectFactItem from './ProjectFactItem'
+
+const ParagraphUpdate = styled(Paragraph)`
+font-weight: 400;
+line-height: 1.9em;
+font-size: 12px;
+
+    ${media.tablet(css`
+    font-size: 14px;
+  `)}
+  ${media.desktop(css`
+    font-size:1.1em;
+    line-height: 1.625em;
+  `)}
+`
 
 const toUpperCase = string => string.replace(/\b\w/g, l => l.toUpperCase())
 const model = {
@@ -11,8 +26,13 @@ const model = {
 
 const ProjectFactsWrapper = styled('div')`
     width: 100%;
-    margin-top: 48px;
-    margin-bottom: 48px;
+    margin-top: 42px;
+    margin-bottom: 42px;
+
+    ${media.desktop(css`
+        margin-top: 48px;
+        margin-bottom: 48px;
+    `)}
 `
 
 const ProjectFacts = ({ projectData }) => {
@@ -40,12 +60,12 @@ const ProjectFacts = ({ projectData }) => {
             {projectData.description && (
                 <div>
                     {projectData.description.map((paragraph, i) => (
-                        <Paragraph
+                        <ParagraphUpdate
                             key={'paragraph' + i}
                             style={{ marginTop: '40px' }}
                         >
                             {paragraph.text}
-                        </Paragraph>
+                        </ParagraphUpdate>
                     ))}
                 </div>
             )}

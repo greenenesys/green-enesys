@@ -1,22 +1,45 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 import RouterLink from '../RouterLink'
-import { ContentWrapper } from '../Grid/ContentWrapper'
+import media from '../../lib/media'
 import logo from '../../assets/images/logo.png'
 import { Link } from 'react-router-dom'
+import menu from './openCloseMenu'
+
+
+
 
 const Wrapper = styled('div')`
-    height: 72px;
     width: 100%;
     background-color: white;
     position: fixed;
     z-index: 10000;
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.15);
+
+    ${media.tablet(css`
+        z-index: 1;
+    `)}
 `
 
-const RouterLinkWrapper = styled('div')`
-    float: right;
-    display: inline-block;
+const HeaderContent = styled('div')`
+    max-width: ${props => props.theme.spacing.contentMaxWidth};
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding-left: 24px;
+    padding-right: 24px;
+    min-height: 64px;
+
+    ${media.tablet(css`
+        padding: 0 45px;
+    `)};
+
+    ${media.desktop(css`
+        padding: 0 32px;
+        min-height: 70px;
+    `)};
 `
 
 const Logo = styled('div')`
@@ -25,37 +48,33 @@ const Logo = styled('div')`
     width: 124px;
     height: 44px;
     display: inline-block;
-    margin-top: 13px;
+    
+
+    ${media.tablet(css`
+        width: 140px;
+        height: 50px;
+        margin-right:13px;
+
+    `)};
+    
+    ${media.desktop(css`
+        width: 124px;
+        height: 44px;
+	`)};
+`
+const LogoLink = styled('a')`
 `
 
-const renderRouterLinks = routes => {
-    return [
-        routes.map(route => {
-            const active =
-                `/${window.location.pathname.split('/')[1]}` === route.path
-            return (
-                <RouterLink
-                    key={route.path}
-                    path={route.path}
-                    name={route.name}
-                    active={active}
-                />
-            )
-        }),
-    ]
-}
 
 const Navigation = ({ routes }) => {
     return (
         <Wrapper>
-            <ContentWrapper>
+            <HeaderContent>
                 <Link to={'/'}>
                     <Logo />
                 </Link>
-                <RouterLinkWrapper>
-                    {renderRouterLinks(routes)}
-                </RouterLinkWrapper>
-            </ContentWrapper>
+                {menu({ routes})}
+            </HeaderContent>
         </Wrapper>
     )
 }

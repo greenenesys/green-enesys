@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
+import media from '../../lib/media'
 import Plasma from '../../components/Plasma'
 import { ContentWrapper } from '../../components/Grid'
 import { H3, Label } from '../../components/Text'
@@ -10,15 +11,31 @@ import IllustrationCapacity from '../../assets/svg/IllustrationCapacity.js'
 import IllustrationReduction from '../../assets/svg/IllustrationReduction.js'
 
 const Wrapper = styled(ContentWrapper)`
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    position: relative;
+    z-index: 5;
+    max-width: 300px;
+    margin: -45px auto 20px;
+
+   ${media.tablet(css`
+        margin: -55px auto  60px;
+        flex-direction: row;
+        max-width: 1164px;
+    `)};
+    
+    ${media.desktop(css`
+        margin: 160px auto;
+    `)};
 `
 
 const figures = [
-    {
+    {   
         name: 'Power Generated',
-        value: 30224,
+        value: 3,
         unit: 'MWh',
         illustration: IllustrationGeneration
     },
@@ -39,15 +56,30 @@ const figures = [
 const FigureWrapper = styled('div')`
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+
+   ${media.tablet(css`
+        width: 33.333%;
+        margin-bottom: 0;
+    `)};
 `
 
 const FigureRight = styled('div')`
   display: inline-block;  
   margin-left: 24px;
+
+   ${media.tablet(css`
+        margin-left: 14px;
+    `)};
+    
+    ${media.desktop(css`
+        margin-left: 24px;
+    `)};
 `
 
 const Figure = ({ data }) => {
-    const { name, value, unit, illustration } = data
+    const { name, value, unit, illustration ,id} = data
 
     return (
         <FigureWrapper>
@@ -62,7 +94,7 @@ const Figure = ({ data }) => {
     )
 }
 
-const electricityProducedinMWh = () => numeral((7.19066270294266*(Math.pow(10, -6))*Date.now()-1.0075845676726*Math.pow(10, 7))).format('0,0.00')
+const electricityProducedinMWh = () => numeral((7.1906*(Math.pow(10, -6))*Date.now()-1.007584*Math.pow(10, 7))).format('0,')
 const co2AvoidedinKg = () =>  numeral((0.00235760808127219*(Date.now())-(3.23839798726656 * Math.pow(10, 9)))* .001).format('0,0.00')
 
 

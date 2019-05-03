@@ -75,7 +75,6 @@ export default class WebGLPlasma extends React.Component {
     }
 
     startLoop = () => {
-        console.log('hello')
         const loop = (time) => {
             requestAnimationFrame(loop)
             this.setState({

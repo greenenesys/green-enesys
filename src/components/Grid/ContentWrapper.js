@@ -6,8 +6,8 @@ import media from '../../lib/media'
 export const ContentWrapper = styled('div')`
     max-width: ${props => props.theme.spacing.contentMaxWidth};
     margin: 0 auto;
-    padding-left: 24px;
-    padding-right: 24px;
+    padding-left: 18px;
+    padding-right: 18px;
 
     ${media.tablet(css`
         padding: 0 32px;

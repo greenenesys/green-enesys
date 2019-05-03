@@ -58,7 +58,6 @@ class Tooltip extends React.Component {
         }
 
         if (position(prevProps.position).left !== position(this.props.position).left) {
-            console.log(getPosition(this.nodeWrapper, this.props.position))
             this.setState({
                 visible: true,
                 offset: getPosition(this.nodeWrapper, this.props.position)

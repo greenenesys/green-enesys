@@ -1,15 +1,41 @@
 import React, { Component } from 'react'
 import { ComposableMap, ZoomableGroup } from 'react-simple-maps'
 import { Wrapper } from './styles'
-import { Spring } from 'react-spring'
+import { Spring } from 'react-spring/renderprops'
 import mapData from '../../../src/assets/maps/continents'
 import { ProjectMarkers, ProjectDensityMarkers, Geo, Waves } from './components'
 import { getProjectsAPI } from '../../api'
 import Tab from './components/Tab'
 import Tooltip from '../../components/Tooltip'
 import { Paragraph, Description } from '../../components/Text'
-import styled from 'styled-components'
-import { withRouter } from 'react-router-dom'
+import styled, { css } from 'styled-components'
+import media from '../../lib/media'
+import { withRouter , Link } from 'react-router-dom'
+import Button from '../../components/Button'
+
+const ComposableMapUpdate = styled(ComposableMap)`
+    pointer-events: none;
+
+    ${media.tablet(css`
+        pointer-events: auto;
+    `)};
+`
+
+
+const ButtonUpdate = styled(Button)`
+    color: #fff;
+    background-color: #ffc539;
+    padding: 0 1.3rem;
+    font-size: 12px;
+`
+
+const WrapperUpdate = styled(Wrapper)`
+    min-height: 10vh;
+
+    ${media.tablet(css`
+        min-height: 80vh;
+    `)};
+`
 
 const TooltipWrapper = styled('div')`
     background-color: white;
@@ -28,17 +54,22 @@ const areas = [
     { name: 'World', coordinates: [0, 20], size: 0, zoom: 0.75 },
     { name: 'Europe', coordinates: [11.582, 45.1351], size: 30, zoom: 5 },
     { name: 'Africa', coordinates: [8.7185, 3.5687], size: 30, zoom: 2 },
-    {
-        name: 'Central America',
-        coordinates: [-85.6024, 12.769],
-        size: 30,
-        zoom: 4,
-    },
+    { name: 'Central America',coordinates: [-85.6024, 12.769], size: 30, zoom: 4,},
 ]
+
+const BtnWrap = styled('div')`
+    position:absolute;
+    bottom: 55px;
+
+     ${media.tablet(css`
+        display: none;
+    `)};
+`
 
 let projection
 
 class Map extends Component {
+    
     state = {
         center: [0, 20],
         zoom: 0.75,
@@ -52,6 +83,7 @@ class Map extends Component {
             },
         },
     }
+
 
     handleZoomIn = () => {
         this.setState({ zoom: this.state.zoom * 2 })
@@ -69,11 +101,13 @@ class Map extends Component {
     }
 
     handleAreaClick = area => {
-        this.setState({
-            zoom: area.zoom,
-            center: area.coordinates,
-            area: area.name,
-        })
+        if(area){
+            this.setState({
+                zoom: area.zoom,
+                center: area.coordinates,
+                area: area.name,
+            })
+        }
     }
 
     handleReset = () => {
@@ -111,7 +145,7 @@ class Map extends Component {
 
     render() {
         return (
-            <Wrapper>
+            <WrapperUpdate>
                 <Tooltip position={this.state.hoveredProjectNode}>
                     <TooltipWrapper>
                         {this.state.hoveredProjectData !== null && (
@@ -140,14 +174,14 @@ class Map extends Component {
                     }}
                 >
                     {({ zoom, x, y }) => (
-                        <ComposableMap
+                        <ComposableMapUpdate
                             projectionConfig={{ scale: 205 }}
                             style={{ width: '100%', height: 'auto' }}
                         >
                             <ZoomableGroup center={[x, y]} zoom={zoom}>
                                 {Geo({
                                     geography: mapData,
-                                    onClick: this.handleContinentClick,
+                                    onClick: (this.handleContinentClick),
                                 })}
                                 {ProjectDensityMarkers({
                                     markers: areas,
@@ -167,7 +201,7 @@ class Map extends Component {
                                             .handleMarkerMouseLeave,
                                     })}
                             </ZoomableGroup>
-                        </ComposableMap>
+                        </ComposableMapUpdate>
                     )}
                 </Spring>
                 <Tab
@@ -175,7 +209,14 @@ class Map extends Component {
                     options={areas.map(area => area.name)}
                     active={this.state.area}
                 />
-            </Wrapper>
+                <BtnWrap>
+                    <Link to={'/projects'}>
+                        <ButtonUpdate>
+                            SEE OUR PROJECTS
+                        </ButtonUpdate>
+                    </Link>
+                </BtnWrap>
+            </WrapperUpdate>
         )
     }
 }

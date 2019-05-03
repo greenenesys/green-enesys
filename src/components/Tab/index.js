@@ -30,7 +30,7 @@ export default class Tab extends React.Component {
     static propTypes = {
         options: PropTypes.array,
         handleClick: PropTypes.func
-    }
+    } 
 
     static defaultProps = {
         options: ['World', 'Europe', 'Africa', 'Asia'],

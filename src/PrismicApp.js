@@ -14,7 +14,6 @@ export default class PrismicApp extends React.Component {
         this.buildContext().then((prismicCtx) => {
             this.setState({prismicCtx})
         }).catch((e) => {
-            console.error(`Cannot contact the API, check your prismic configuration:\n${e}`)
         })
     }
 
