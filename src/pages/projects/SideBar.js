@@ -7,6 +7,7 @@ import SideBarGroup from './SideBarGroup'
 import Filter from './Filter'
 import CloseIcon from '../../assets/images/close.png'
 import ArrowBack from '../../assets/images/arrow-back.png'
+import { Link } from 'react-router-dom'
 
 const СountryWrapper = styled('div')   `
     ${media.tablet(css`
@@ -50,7 +51,8 @@ const ItemWrapper = styled('div')`
     `)}
 
     .open>&{
-        height:100%;
+        height:auto;
+        min-height: calc(100vh - 60px);
         ${media.tablet(css`
             height:auto;
         `)}
@@ -112,6 +114,32 @@ const HeadGroup = styled('div')`
        display: none;
     `)}
 `
+const BtnWrapper = styled('div')`
+    max-width: 285px;
+    height: 50px;
+    display: block;
+    text-align: center;
+    padding: 0 15px;
+    margin: 24px 0px 24px 18px;
+    background-color: #f7b500;
+
+    ${media.tablet(css`
+       display: none;
+    `)}
+
+
+
+    a{
+        font-family: 'MaisonNeue';
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 600;
+          display: inline-block;
+        width: 100%;
+        text-decoration: none;
+        line-height: 53px;
+    }
+`
 const HeadTitle = styled('div')`
      .open-city &{
         display: none;
@@ -164,16 +192,18 @@ class SideBar extends React.Component {
 
     renderItems = () => {
         const { groups, projects, activeProject } = this.props
-        return groups.map(group => {
+        return groups.map((group, index) => {
+            let rout = '';
             return (
                 
-                <div key={'wrapper-' + group} className={'item-group'}>
+                <div key={'wrapper-' + group} className={index ? 'item-group' : 'item-group open'}>
                 
                     <SideBarGroup > {group} </SideBarGroup>
                     <ItemWrapper>
                         {projects
                             .filter(project => project.data.country === group)
-                            .map(project => {
+                            .map((project,index) => {
+                                if (!index) rout = project.slugs[0];
                                 return (
                                     
                                     <SideBarItem
@@ -188,6 +218,11 @@ class SideBar extends React.Component {
                                     </SideBarItem>
                                 )
                             })}
+                        <BtnWrapper onClick={this.closeMobileMenu.bind(this)}>
+                            <Link to={'/projects/' + rout}>
+                                View Project
+                            </Link>
+                        </BtnWrapper>
                     </ItemWrapper>
                 </div>
             )

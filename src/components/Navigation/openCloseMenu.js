@@ -13,15 +13,15 @@ const RouterLinkWrapper = styled('div')`
 		position: absolute;
 		flex-direction: column;
 		justify-content: space-around;
-		padding: 40px 0;
+		padding: 80px 0 20px;
 		top: 100%;
     	left: 0;
     	right: 0;
-    	height: calc(100vh - 64px);
 		background: #fff;
 		opacity: 0;
 		transform: translateX(100%);
 		transition: .3s;
+		
 	
 		.open &{
 			opacity: 1;

@@ -44,6 +44,8 @@ justify-content: center;
     ${media.tablet(css`
         justify-content: space-between;
         ${baseStyles};
+        height: auto;
+        padding: 3px 0 0 16px;
     `)}
     ${media.desktop(css`
         padding: 0 16px;
@@ -177,8 +179,15 @@ class Filter extends React.Component {
         if (hasClass(target,ac)){
             target.classList.remove(ac)
         } else {
+            var item = document.querySelectorAll('.item-group.open');
+            if(item.length){
+                for (var i = 0; i < item.length; i++) {
+                    item[i].classList.remove('open')
+                }
+            }
             target.classList.add(ac)
         }
+       
         function hasClass(target, className) {
             return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
         }
@@ -207,10 +216,10 @@ class Filter extends React.Component {
                     <TextCountry className={'contry'}></TextCountry>
                     <Icon src={icon}></Icon>
                 </СountryWrapper>
-                <HeadWrapper>
+                <HeadWrapper >
                     <Left>
                         <DescriptionUpdate strip> Project Status </DescriptionUpdate>
-                        <ParagraphUpdate fontWeight="medium" strip mt={-1}>
+                        <ParagraphUpdate  fontWeight="medium" strip mt={-1}>
                             {' '}
                             {status.length === activeStatus.length
                                 ? 'All'

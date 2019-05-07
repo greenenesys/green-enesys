@@ -17,7 +17,7 @@ const Wrapper = styled('div')`
     box-shadow: 0 2px 2px -2px rgba(0, 0, 0, 0.15);
 
     ${media.tablet(css`
-        z-index: 1;
+        z-index: 10;
     `)}
 `
 
@@ -48,18 +48,19 @@ const Logo = styled('div')`
     width: 124px;
     height: 44px;
     display: inline-block;
+    margin: 8px 0;
     
 
     ${media.tablet(css`
         width: 140px;
         height: 50px;
-        margin-right:13px;
-
+        margin: 5px 0;
     `)};
     
     ${media.desktop(css`
         width: 124px;
         height: 44px;
+        margin: 11px 0;
 	`)};
 `
 const LogoLink = styled('a')`

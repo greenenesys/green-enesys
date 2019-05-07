@@ -17,10 +17,10 @@ import { THEME_DARK, THEME_LIGHT } from '../../theme/constants'
 export const IllustrationBackground = styled('div')`
     width: 100%;
     background-image: linear-gradient(-129deg, #21956e 0%, #82b86a 100%);
-    height: 335px;
+    height: 285px;
 
     ${media.tablet(css`
-        height: 440px;
+        height: 400px;
     `)};
 
     ${media.desktop(css`
@@ -36,7 +36,7 @@ const Buttom2 = styled(Button)`
     line-height: 34px;
 
 
- ${media.tablet(css`
+    ${media.tablet(css`
         font-size: 15px;
         padding: 0 2rem;
         margin-top: 8px;
@@ -47,23 +47,40 @@ const Buttom2 = styled(Button)`
     ${media.desktop(css`
         letter-spacing: 1.5px;
 	`)};
-
-
 `
 
 export const IllustrationBottom = styled(IllustrationJumboBottom)`
-    bottom: 0;
+    bottom: -50px;
     position: absolute;
     z-index: 0;
+
+     ${media.tablet(css`
+        bottom: 0;
+    `)};
 `
 
 
 
 const Illustration = styled(IllustrationJumbo)`
     position: absolute;
-    bottom: -15px;
+    bottom: -95px;
+    width: calc(100% - 20px);
+    left: 10px;
     z-index: 1;
-    width: 100%;
+    
+    ${media.tablet(css`
+        bottom: -18px;
+        left: 100px;
+        width: calc(100% - 195px);
+    `)};
+
+    ${media.desktop(css`
+        bottom: -15px;
+        width: 100%;
+        left: 0;
+    `)}
+
+   
 `
 
 const ContentWrapperStyle2 = styled(ContentWrapper)`
@@ -80,6 +97,7 @@ const ContentWrapperStyle2 = styled(ContentWrapper)`
 export const IllustrationBottomMountain = styled(IllustrationMountain)`
     position: absolute;
     top: 170px;
+    left:0;
 `
 
 export const Wrapper = styled('div')`
@@ -88,6 +106,7 @@ export const Wrapper = styled('div')`
     align-content: center;
     justify-content: center;
     margin-top: 64px;
+    // overflow: hidden;
 
 
      ${media.tablet(css`
@@ -130,7 +149,7 @@ const PlasmaWrapper = styled('div')`
     `)};
     
     svg{
-      height: auto;
+      height: 135px;
        width: 260px;
 
         ${media.tablet(css`

@@ -33,6 +33,7 @@ const ButtonUpdate = styled(Button)`
 `
 
 const Wrapper = styled('div')`
+    position: relative;
     height: auto;
     width: 100%;
     display: flex;
@@ -74,7 +75,15 @@ const ParagraphWrapper = styled('div')`
 const Plant = styled('img')`
     position: absolute;
     height: 140px;
-    transform: translateX(-240px) translateY(140px);
+    left: 50%;
+    bottom: 0;
+    transform: translateX(calc(-50% - 120px)) translateY(35px);
+    
+
+     ${media.tablet(css`
+            transform: translateX(-224px) translateY(28px);
+            height: 165px;
+    `)};
 `
 
 const Footer = () => {

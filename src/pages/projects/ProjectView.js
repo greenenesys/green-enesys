@@ -30,7 +30,7 @@ const H2Update = styled(H2)`
 
 const Wrapper = styled('div')`
 width: 100%;
-padding: 30px 15px 0 15px;
+padding: 37px 15px 0 15px;
 
     ${media.tablet (css`
         padding: 30px 15px 0 25px;
@@ -119,7 +119,7 @@ class ProjectView extends React.Component {
                 <H2Update strip mb={4}>
                     {this.props.activeProject.data.name}
                 </H2Update>
-                <ProjectFacts projectData={this.props.activeProject.data} />
+                <ProjectFacts className="wwwww" projectData={this.props.activeProject.data} />
                 {this.renderMedia()}
             </div>
         )

@@ -49,15 +49,72 @@ const Title = styled('div')`
     font-weight: 400;
     box-shadow: 0 0 7px rgba(0, 0, 0, 0.11);
     min-width: 162px;
-    padding: 16px;
     margin-bottom: 10px;
+    padding: 16px;
     color: rgba(0, 0, 0, 0.75);
-
-
+    
     ${media.tablet(css`
+        padding: 12px;
+        position: absolute;
+        font-size: 12px;
+        z-index:1;
+        min-width: 140px;
+        text-align: center;
+        background: #fff;
+
+        &::before{
+            content: '';
+            position: absolute;
+            width: 0px;
+            height: 0px;
+            top: 100%;
+            left: calc(50% - 6px);
+            border-right: 6px solid transparent;
+            border-left: 6px solid transparent;
+            border-top: 3px solid #fff;
+        }
+    `)};
+
+
+    ${media.desktop(css`
         display: none;
     `)};
 `
+
+const TitleBattery = styled(Title)`
+    ${media.tablet(css`
+        left: calc(36% - 70px);
+        top: 58%;
+    `)};
+`
+const TitleTrash = styled(Title)`
+    ${media.tablet(css`
+        left: calc(48% - 70px);
+        top: 10%;
+    `)};
+`
+const TitleHeat = styled(Title)`
+    ${media.tablet(css`
+        left: calc(61% - 70px);
+        top: 54%;
+    `)};
+`
+const TitleFactory = styled(Title)`
+    ${media.tablet(css`
+        left: calc(71% - 68px);
+        top: 33%;
+    `)};
+`
+const TitlePhoto = styled(Title)`
+    ${media.tablet(css`
+        left: calc(20% - 68px);
+        top: 28%;
+    `)};
+`
+
+
+
+
 
 const Photo = styled('img')`
     width: 100%;
@@ -255,7 +312,7 @@ class Solutions extends React.Component {
                 </Tooltip>
                 <IllustrationWrapper>
                     <HashLink to={'solutions#waste-to-power'} smooth>
-                        <Title>'Waste to Power Plant'</Title>
+                        <TitleFactory>Waste to Power Plant</TitleFactory>
                         <Factory
                             data-tip
                             active={active === 'factory' || active === 'none'}
@@ -278,7 +335,7 @@ class Solutions extends React.Component {
                         />
                     </HashLink>
                     <HashLink to={'solutions#photovoltaic'} smooth>
-                        <Title>Photovoltaic Farm</Title>
+                        <TitlePhoto>Photovoltaic Farm</TitlePhoto>
                         <Photo
                             data-tip
                             active={active === 'photo' || active === 'none'}
@@ -288,7 +345,7 @@ class Solutions extends React.Component {
                         />
                     </HashLink>
                     <HashLink to={'solutions#waste'} smooth>
-                        <Title>Waste</Title>
+                        <TitleTrash>Waste</TitleTrash>
                         <Trash
                             data-tip
                             active={active === 'trash' || active === 'none'}
@@ -298,7 +355,7 @@ class Solutions extends React.Component {
                         />
                     </HashLink>
                     <HashLink to={'solutions#electrical-storage'} smooth>
-                        <Title>Electrical Storage</Title>
+                        <TitleBattery>Electrical Storage</TitleBattery>
                         <ContainerBattery
                             data-tip
                             active={active === 'battery' || active === 'none'}
@@ -319,7 +376,7 @@ class Solutions extends React.Component {
                         />
                     </HashLink>
                     <HashLink to={'solutions#thermal-storage'} smooth>
-                        <Title>Thermal Storage</Title>
+                        <TitleHeat>Thermal Storage</TitleHeat>
                         <ContainerHeat
                             data-tip
                             active={active === 'heat' || active === 'none'}

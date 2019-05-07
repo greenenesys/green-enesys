@@ -12,9 +12,15 @@ import { Link } from 'react-router-dom'
 
 import { space } from 'styled-system'
 
-const ContentWra1pper = styled(ContentWrapper)`{
-dsf
-}`
+const ContentWrapperUpdate = styled(ContentWrapper)`
+    ${media.tablet(css`
+        padding: 0 32px 40px;
+    `)};
+
+    ${media.desktop(css`
+        padding: 0 32px;
+    `)};
+`
 
 
 
@@ -244,7 +250,7 @@ const Hold = () => {
 
 const AboutUs = () => {
     return (
-        <ContentWrapper>
+        <ContentWrapperUpdate>
             <CenterArticle>
                 <ParagraphStyle2>
                     {' '}
@@ -265,7 +271,7 @@ const AboutUs = () => {
             <Financing />
             <Managing />
             <Hold />
-        </ContentWrapper>
+        </ContentWrapperUpdate>
     )
 }
 

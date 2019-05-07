@@ -10,6 +10,31 @@ import IllustrationGeneration from '../../assets/svg/IllustrationGeneration.js'
 import IllustrationCapacity from '../../assets/svg/IllustrationCapacity.js'
 import IllustrationReduction from '../../assets/svg/IllustrationReduction.js'
 
+const LabelUpdate = styled(Label)`
+
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.71px;
+    text-transform: uppercase;
+
+    ${media.tablet(css`
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-size: 10px;
+    `)};
+`
+
+const H3Update = styled(H3)`
+    font-size: 16px;
+    margin-bottom: 2px;
+
+    ${media.tablet(css`
+        font-size: 22px;
+        margin-bottom: 3px;
+    `)};
+`
+
 const Wrapper = styled(ContentWrapper)`
     display: flex;
     justify-content: space-between;
@@ -19,10 +44,10 @@ const Wrapper = styled(ContentWrapper)`
     position: relative;
     z-index: 5;
     max-width: 300px;
-    margin: -45px auto 20px;
+    margin: 10px auto 20px;
 
    ${media.tablet(css`
-        margin: -55px auto  60px;
+        margin: -10px auto  60px;
         flex-direction: row;
         max-width: 1164px;
     `)};
@@ -56,18 +81,22 @@ const figures = [
 const FigureWrapper = styled('div')`
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+   
+  margin-bottom: 23px;
   width: 100%;
+
 
    ${media.tablet(css`
         width: 33.333%;
         margin-bottom: 0;
+         flex-direction: row;
+    justify-content: center;
     `)};
 `
 
 const FigureRight = styled('div')`
   display: inline-block;  
-  margin-left: 24px;
+  margin-left: 26px;
 
    ${media.tablet(css`
         margin-left: 14px;
@@ -87,8 +116,8 @@ const Figure = ({ data }) => {
                 {illustration()}
             </Plasma>
             <FigureRight>
-                <H3 strip> {value + ' ' + unit} </H3>
-                <Label strip> {name} </Label>
+                <H3Update strip> {value + ' ' + unit} </H3Update>
+                <LabelUpdate strip> {name} </LabelUpdate>
             </FigureRight>
         </FigureWrapper>
     )

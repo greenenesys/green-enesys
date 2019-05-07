@@ -72,7 +72,7 @@ class Map extends Component {
     
     state = {
         center: [0, 20],
-        zoom: 0.75,
+        zoom: 1,
         area: 'World',
         projects: null,
         flag: true,

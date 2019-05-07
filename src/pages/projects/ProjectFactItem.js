@@ -8,6 +8,11 @@ const ProjectFactItemWrapper = styled('div')`
   width: 100%;
   display: flex;
   justify-content: space-between;
+  padding: 0 25px 10px 0;
+
+    ${media.tablet(css`
+      padding: 0;
+    `)}
 
 `
 

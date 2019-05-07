@@ -2,7 +2,9 @@ import React from 'react'
 import { ArticleWrapper } from '../../components/Grid/ArticleWrapper'
 import { H2, H3, H4, Paragraph } from '../../components/Text'
 import styled, { css } from 'styled-components'
+import VideoBg from '../../assets/images/video-bg.jpg'
 import media from '../../lib/media'
+import VideoFile from '../../assets/video/video-bg.mp4'
 import {
     IllustrationBackground,
     IllustrationBottomMountain,
@@ -10,6 +12,10 @@ import {
     Wrapper,
 } from '../home/Jumbotron'
 import plant from '../../assets/images/plant.png'
+
+const IllustrationBottomUpdat = styled(IllustrationBottom)`
+    left: 0;
+`
 
 const ArticleWrapperUpdate = styled(ArticleWrapper)`
     margin: 40px auto 60px;
@@ -47,6 +53,7 @@ const H2Update = styled(H2)`
     font-size: 18px;
     font-weight: 300;
     max-width: 293px;
+    z-index: 2;
 
     ${media.tablet(css`
         font-size: 1.4em;
@@ -100,17 +107,36 @@ const Video = styled('video')`
     width: 100%;
     height: auto;
     margin: 0 auto;
-    z-index: 200;
+    z-index: 1;
+    display: none;
+    position: relative;
+
+    ${media.tablet(css`
+        display: block;
+    `)};
+`
+
+const VideoImg = styled('img')`
+display: block;
+width: 100%;
+position: relative;
+z-index: 1;
+
+${media.tablet(css`
+        display: none;
+    `)};
 `
 
 const VideoWrapper = styled('div')`
     padding: 0 15px;
     margin: 0 auto;
-    z-index: 200;
+    z-index: 2;
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     margin-top: 100px;
+
 
     ${media.tablet(css`
         padding: 0 80px;
@@ -142,8 +168,8 @@ export default class AboutPage extends React.Component {
                     style={{ position: 'absolute', top: 0, width: '100%' }}
                 >
                     <IllustrationBackground />
-                    <IllustrationBottom />
-                    <IllustrationBottomMountain />
+                    <IllustrationBottomUpdat />
+                    {/* <IllustrationBottomMountain /> */}
                 </Wrapper>
                 <ContentWrapper>
                     <VideoWrapper>
@@ -159,9 +185,10 @@ export default class AboutPage extends React.Component {
                         >
                             Delivering clean and afficient energy for a sustainable planet.
                         </H2Update>
-                        <Video autoPlay loop style={{ zIndex: 4 }}>
-                            <source src="https://res.cloudinary.com/dyv4p67lk/video/upload/f_auto,q_auto/v1540291061/Videos/Wooden%20Park/Sequence_02_30_SEC.mp4" />
+                        <Video autoPlay loop muted playsinline>
+                            <source src={"http://res.cloudinary.com/dyv4p67lk/video/upload/f_auto,q_auto/v1540291061/Videos/Wooden%20Park/Sequence_02_30_SEC.mp4"} type="video/mp4"/>
                         </Video>
+                        <VideoImg src={VideoBg}/>
                     </VideoWrapper>
                     <ArticleWrapperUpdate>
                         <H2Style2>About Green Enesys</H2Style2>

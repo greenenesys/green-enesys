@@ -454,6 +454,9 @@ template {
     height: auto;
     width: 26px;
   }
+  [data-id=tooltip]{
+    display: none;
+  }
 
   [data-id=tooltip]>h4{
     font-size: 14px;

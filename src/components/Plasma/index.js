@@ -35,6 +35,7 @@ const FallbackBubble = styled('div')`
   background-color: ${ props => props.theme.color.ui.primary };
   border-radius: 50%;
   position: absolute;
+  left: 0;
 
   ${media.tablet(css`
         width: 50px;

@@ -43,10 +43,12 @@ const Wrapper = styled('div')`
 
    ${media.tablet(css`
         margin-top: 0;
-        padding: 65px 0 0;
+        padding: 30px 0 0;
+        
   `)};
   
     ${media.desktop(css`
+        padding: 65px 0 0;
          ${space};
   `)};
 
@@ -71,14 +73,14 @@ const MissionItemWrapper = styled('div')`
 
 const ItemWrapper = styled('div')`
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: flex-start;
   max-width: 100%;
   margin-bottom: 20px;
   
   ${media.tablet(css`
-    max-width: calc(50% - 15px);
+    width: calc(50% - 15px);
     margin-bottom: 40px;
   `)};
 

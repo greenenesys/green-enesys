@@ -4,6 +4,15 @@ import media from '../../lib/media'
 import { Paragraph, H3, H4 } from '../../components/Text'
 import ProjectFactItem from './ProjectFactItem'
 
+const H4Update = styled(H4)`
+    font-size: 18px;
+        margin-top: 14px;
+    ${media.tablet(css`
+        font-size: 21px;
+         margin-top: 32px;
+    `)}
+`
+
 const ParagraphUpdate = styled(Paragraph)`
 font-weight: 400;
 line-height: 1.9em;
@@ -26,8 +35,11 @@ const model = {
 
 const ProjectFactsWrapper = styled('div')`
     width: 100%;
-    margin-top: 42px;
+    margin-top: 30px;
     margin-bottom: 42px;
+    ${media.tablet(css`
+        margin-top: 42px;
+    `)}
 
     ${media.desktop(css`
         margin-top: 48px;
@@ -41,9 +53,9 @@ const ProjectFacts = ({ projectData }) => {
             {Object.keys(model).map(key => {
                 return (
                     <div key={'wrapper-' + key}>
-                        <H4 strip mb={3} mt={4}>
+                        <H4Update strip mb={3} mt={4}>
                             {toUpperCase(key)}
-                        </H4>
+                        </H4Update>
                         {model[key].map(key =>
                             projectData[key] ? (
                                 <ProjectFactItem

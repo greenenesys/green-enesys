@@ -8,7 +8,7 @@ import { bool } from 'prop-types'
 const RouterLink = styled(NavLink)`
   ${baseStyle};
   text-decoration: none;
-  margin-bottom: 10px;
+  margin-bottom: 53px;
   font-size: 25px;
   font-weight: 700;
   &.active{
@@ -44,4 +44,4 @@ function handleClickClose(e){
   $this.parentNode.parentNode.classList.remove('open');
 }
 
-export default ({ name, path, active }) => <RouterLink exact={active} data-active={active?'true':'false'} opacity={active?1:.6}  onClick={handleClickClose} to={path}> {name} </RouterLink>
+export default ({ name, path, active }) => <RouterLink exact={active} data-active={active?'true':'false'}   onClick={handleClickClose} to={path}> {name} </RouterLink>
