@@ -27,7 +27,7 @@ const LabelUpdate = styled(Label)`
 
 const H3Update = styled(H3)`
     font-size: 16px;
-    margin-bottom: 2px;
+    margin-bottom: 5px;
 
     ${media.tablet(css`
         font-size: 22px;

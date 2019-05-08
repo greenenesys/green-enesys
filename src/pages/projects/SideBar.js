@@ -55,6 +55,7 @@ const ItemWrapper = styled('div')`
         min-height: calc(100vh - 60px);
         ${media.tablet(css`
             height:auto;
+            min-height: 0;
         `)}
     }
 `
@@ -120,7 +121,7 @@ const BtnWrapper = styled('div')`
     display: block;
     text-align: center;
     padding: 0 15px;
-    margin: 24px 0px 24px 18px;
+    margin: 24px auto;
     background-color: #f7b500;
 
     ${media.tablet(css`
@@ -198,7 +199,7 @@ class SideBar extends React.Component {
                 
                 <div key={'wrapper-' + group} className={index ? 'item-group' : 'item-group open'}>
                 
-                    <SideBarGroup > {group} </SideBarGroup>
+                    <SideBarGroup> {group} </SideBarGroup>
                     <ItemWrapper>
                         {projects
                             .filter(project => project.data.country === group)

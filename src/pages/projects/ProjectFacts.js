@@ -6,11 +6,24 @@ import ProjectFactItem from './ProjectFactItem'
 
 const H4Update = styled(H4)`
     font-size: 18px;
-        margin-top: 14px;
+    margin-top: 14px;
+    position: relative;
+
     ${media.tablet(css`
         font-size: 21px;
          margin-top: 32px;
     `)}
+
+    &:before{
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #979797;
+        opacity: .3;
+    }
 `
 
 const ParagraphUpdate = styled(Paragraph)`

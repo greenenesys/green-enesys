@@ -8,7 +8,6 @@ import { bool } from 'prop-types'
 const RouterLink = styled(NavLink)`
   ${baseStyle};
   text-decoration: none;
-  margin-bottom: 53px;
   font-size: 25px;
   font-weight: 700;
   &.active{
@@ -23,8 +22,8 @@ const RouterLink = styled(NavLink)`
   ${media.tablet(css`
     margin-top: 0;
     margin-bottom: 0;
+    margin-left: 18px;
     font-size: 14px;
-    padding-left: 18px;
     opacity: .6;
     font-weight: 400;
     opacity: ${props => props.opacity}
@@ -32,8 +31,8 @@ const RouterLink = styled(NavLink)`
   `)};
   
   ${media.desktop(css`
+    margin-left: 24px;
     font-size: 18px;
-    padding-left: 24px;
 `)};
 `
 

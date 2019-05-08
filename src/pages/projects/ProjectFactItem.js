@@ -29,6 +29,11 @@ const Line = styled('span')`
   border-bottom: 1px solid rgba(0,0,0,0.1);
   flex-grow: 1;
   margin-bottom: 6px;
+  display: none;
+
+  ${media.tablet(css`
+    display: block;
+  `)}
 `
 
 const ProjectFactItem = ({ valueKey, value }) => {

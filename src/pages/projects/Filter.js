@@ -118,7 +118,7 @@ const IconWrapper = styled('div')`
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    pointer-events: ${props => (props.active ? 'none' : 'auto')};
+    // pointer-events: ${props => (props.active ? 'none' : 'auto')};
     background: url(${img}) ;
     background-repeat: no-repeat;
     background-position: center;
@@ -195,8 +195,13 @@ class Filter extends React.Component {
     }
 
     onClickAway = event => {
-        if (!this.state.show) return
-        this.handleClick()
+        if (!hasClass(event.target,'filter-opener')){
+            if (!this.state.show) return
+            this.handleClick()
+        }
+        function hasClass(target, className) {
+            return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
+        }
     }
 
     get statusString() {
@@ -227,8 +232,9 @@ class Filter extends React.Component {
                         </ParagraphUpdate>
                     </Left>
 
-                    <div>
+                    <div className="filter-opener">
                         <IconWrapper
+                        className = "filter-opener"
                             active={this.state.show}
                             onClick={this.handleClick}
                             style={{ cursor: 'pointer' }}

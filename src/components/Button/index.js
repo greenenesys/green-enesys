@@ -33,7 +33,7 @@ const ButtonWrapper = styled('div')`
     white-space: nowrap;
     padding: 0 2rem;
     user-select: none;
-    z-index: 200;
+    z-index: 2;
     font-weight: 600;
 
     color: ${props => props.theme.color.ui.secondary};

@@ -7,6 +7,49 @@ import { space } from 'styled-system'
 import ProjectFacts from './ProjectFacts'
 import Slider from 'react-slick'
 import { getCloudImageUrl } from '../../lib/util'
+import ArrowSlick from '../../assets/svg/slick-arrow.js'
+
+const Arrow = styled('div')`
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid rgba(0, 0, 0, 0.11);
+    transition: .3s;
+    border-radius: 0px;
+    font-size: 0;
+    display: flex !important;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
+
+    &:hover{
+        border: 1px solid rgba(0, 0, 0, 0.91);
+    }
+
+    ${media.tablet(css`
+        display: none !important;
+    `)}
+`
+const ArrowPrev = styled(Arrow)`
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    svg{
+        transform: rotate(180deg);
+        width: 13px;
+    }
+`
+
+const ArrowNext = styled(Arrow)`
+    margin: 5px 0 65px;
+
+    svg{
+        width: 13px;
+    }
+`
 
 const ImgWrap = styled('img')`
     height:auto;
@@ -35,6 +78,10 @@ padding: 37px 15px 0 15px;
     ${media.tablet (css`
         padding: 30px 15px 0 25px;
         width: calc(100% - 275px);
+
+        .slick-dots{
+            display: block;
+        }
     `)}
 
     ${media.desktop(css`
@@ -42,7 +89,36 @@ padding: 37px 15px 0 15px;
         ${space};
         width: 70%;
     `)}
+
+    .slick-dots{
+        display: none !important;
+        ${media.tablet (css`
+            display: block !important;
+        `)}
+    }
 `
+
+function SampleNextArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <ArrowNext
+        className={className}
+        style={{ ...style}}
+        onClick={onClick}
+      ><ArrowSlick/></ArrowNext>
+    );
+  }
+  
+  function SamplePrevArrow(props) {
+    const { className, style, onClick } = props;
+    return (
+      <ArrowPrev
+        className={className}
+        style={{ ...style }}
+        onClick={onClick}
+      ><ArrowSlick/></ArrowPrev>
+    );
+  }
 
 let sliderSettings = {
     dots: true,
@@ -53,9 +129,11 @@ let sliderSettings = {
     initialSlide: 2,
     autoplay: true,
     autoplaySpeed: 5000000,
-    arrows: false,
+    // arrows: false,
     dotsClass: 'slick-dots slick-thumb',  
     adaptiveHeight: true,
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />
 }
 
 class ProjectView extends React.Component {
@@ -119,7 +197,7 @@ class ProjectView extends React.Component {
                 <H2Update strip mb={4}>
                     {this.props.activeProject.data.name}
                 </H2Update>
-                <ProjectFacts className="wwwww" projectData={this.props.activeProject.data} />
+                <ProjectFacts  projectData={this.props.activeProject.data} />
                 {this.renderMedia()}
             </div>
         )

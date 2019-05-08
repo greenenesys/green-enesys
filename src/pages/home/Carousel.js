@@ -7,20 +7,22 @@ import { Description, Label } from '../../components/Text'
 import { getProjectsAPI } from '../../api'
 import { Link } from 'react-router-dom'
 import { getCloudImageUrl } from '../../lib/util'
-import ArrowSlick from '../../assets/images/slick-arrow.png'
-
-// import ArrowButton from '../../components/Button/ArrowButton'
+import ArrowSlick from '../../assets/svg/slick-arrow.js'
 
 const Arrow = styled('div')`
-    background-image: url(${ArrowSlick});
-    width: 26px;
-    height: 26px;
+    
+    width: 27px;
+    height: 27px;
     background-repeat: no-repeat;
     background-position: center;
     border: 1px solid rgba(0, 0, 0, 0.11);
     transition: .3s;
     border-radius: 0px;
     font-size: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
     
     &:hover{
         border: 1px solid rgba(0, 0, 0, 0.91);
@@ -39,7 +41,6 @@ const Wrapper = styled('div')`
   ${({ type, arrow, controlled }) => {
         if (type === 'outline') {
             return css`
-        //  border: 1px solid hsl(${props => props.theme.color.interface.primary});
          padding: 0 24px;
          & :hover {
            background-color: hsla(${props => props.theme.color.interface.primary}, 0.1);
@@ -81,7 +82,8 @@ const ArrowButton = ({ onClick, disabled, type, uppercase, arrow, children, hove
         <Wrapper onClick={onClick} type={type} controlled={controlled}>
             <Label accent uppercase={uppercase}> {children} </Label>
             {arrow && <ArrowWrapper>
-                <Arrow/>
+                <Arrow><ArrowSlick></ArrowSlick></Arrow>
+                
             </ArrowWrapper>}
         </Wrapper>
     )
@@ -257,7 +259,7 @@ export default class Carousel extends Component {
                     })}
                 </Slider>
                 <ArrowContainer>
-                    <SlideArrow onClick={this.next} />
+                    <SlideArrow onClick={this.next}></SlideArrow>
                     <SlideArrow onClick={this.prev} flip />
                 </ArrowContainer>
             </div>

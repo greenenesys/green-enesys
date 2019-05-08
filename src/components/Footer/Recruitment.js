@@ -74,7 +74,7 @@ const ParagraphWrapper = styled('div')`
 
 const Plant = styled('img')`
     position: absolute;
-    height: 140px;
+    height: 158px;
     left: 50%;
     bottom: 0;
     transform: translateX(calc(-50% - 120px)) translateY(35px);

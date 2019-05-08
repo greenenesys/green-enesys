@@ -12,26 +12,47 @@ const RouterLinkWrapper = styled('div')`
  	@media (max-width: 767px) { 
 		position: absolute;
 		flex-direction: column;
-		justify-content: space-around;
-		padding: 80px 0 20px;
+		justify-content: space-between;
+		padding: 80px 0 100px;
 		top: 100%;
+		height: calc(100vh - 64px);
+		max-height: 525px;
     	left: 0;
     	right: 0;
 		background: #fff;
 		opacity: 0;
 		transform: translateX(100%);
 		transition: .3s;
+
+		
 		
 	
 		.open &{
 			opacity: 1;
 			transform: translateX(0);
 		}
+		
 	}
 	
 	a{
 		font-family:'MaisonNeue';
 	}
+
+
+	&:before{
+		content:'';
+		position: absolute;
+		top: 100%;
+		left:0 ;
+		right: 0;
+		background: #fff;
+		height: 100vh;
+
+		${media.tablet(css`
+			display:none;
+		`)};
+	}
+	
   
 `
 
