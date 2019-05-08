@@ -23,6 +23,10 @@ const H4Update = styled(H4)`
         height: 1px;
         background: #979797;
         opacity: .3;
+
+        ${media.tablet(css`
+            display: none;
+        `)}
     }
 `
 

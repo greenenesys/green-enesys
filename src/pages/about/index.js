@@ -48,6 +48,20 @@ ${media.desktop(css`
 
 `
 
+
+const IllustrationBackgroundUpdate = styled(IllustrationBackground)`
+    height: auto;
+    padding-bottom: 55%;
+    ${media.tablet(css`
+        height: 400px;
+        padding-bottom: 0;
+    `)};
+    ${media.desktop(css`
+    height: 600px;
+    `)};
+
+`
+
 const H2Update = styled(H2)`
     padding-bottom: 40px;
     font-size: 18px;
@@ -167,7 +181,7 @@ export default class AboutPage extends React.Component {
                 <Wrapper
                     style={{ position: 'absolute', top: 0, width: '100%' }}
                 >
-                    <IllustrationBackground />
+                    <IllustrationBackgroundUpdate />
                     <IllustrationBottomUpdat />
                     {/* <IllustrationBottomMountain /> */}
                 </Wrapper>
@@ -185,7 +199,7 @@ export default class AboutPage extends React.Component {
                         >
                             Delivering clean and afficient energy for a sustainable planet.
                         </H2Update>
-                        <Video autoPlay loop muted playsinline>
+                        <Video autoPlay loop muted playSinline webkit-playsinline>
                             <source src={"http://res.cloudinary.com/dyv4p67lk/video/upload/f_auto,q_auto/v1540291061/Videos/Wooden%20Park/Sequence_02_30_SEC.mp4"} type="video/mp4"/>
                         </Video>
                         <VideoImg src={VideoBg}/>

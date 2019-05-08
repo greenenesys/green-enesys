@@ -14,10 +14,13 @@ import IllustrationSun from '../../assets/svg/IllustrationSun.js'
 
 import { THEME_DARK, THEME_LIGHT } from '../../theme/constants'
 
+// width: 820px;
+// height: 424px;
+
 export const IllustrationBackground = styled('div')`
     width: 100%;
     background-image: linear-gradient(-129deg, #21956e 0%, #82b86a 100%);
-    height: 285px;
+    height: 252px;
 
     ${media.tablet(css`
         height: 400px;
@@ -45,14 +48,22 @@ const Buttom2 = styled(Button)`
     `)};
     
     ${media.desktop(css`
+        font-size: 20px;
+        height: auto;
         letter-spacing: 1.5px;
+        border-radius: 200px;
+        line-height: 61px;
 	`)};
 `
 
 export const IllustrationBottom = styled(IllustrationJumboBottom)`
-    bottom: -50px;
+    bottom: 0;
     position: absolute;
     z-index: 0;
+    height: auto;
+    left: 0;
+    width: 291%;
+    transform: translateX(-30%);
 
      ${media.tablet(css`
         bottom: 0;
@@ -63,7 +74,7 @@ export const IllustrationBottom = styled(IllustrationJumboBottom)`
 
 const Illustration = styled(IllustrationJumbo)`
     position: absolute;
-    bottom: -95px;
+    bottom: -124px;
     width: calc(100% - 20px);
     left: 10px;
     z-index: 1;
@@ -154,6 +165,7 @@ const PlasmaWrapper = styled('div')`
 
         ${media.tablet(css`
             width: 360px;
+            height: auto;
         `)};
 
 

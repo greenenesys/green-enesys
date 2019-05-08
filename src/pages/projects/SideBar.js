@@ -44,6 +44,7 @@ const ItemWrapper = styled('div')`
      top:0 ;
      left:0;
      width: 100%;
+     z-index:1;
      background: #fff;
 
     ${media.tablet(css`
@@ -116,7 +117,7 @@ const HeadGroup = styled('div')`
     `)}
 `
 const BtnWrapper = styled('div')`
-    max-width: 285px;
+    max-width: calc(100% - 32px);
     height: 50px;
     display: block;
     text-align: center;

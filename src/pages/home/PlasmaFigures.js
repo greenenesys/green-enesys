@@ -44,7 +44,7 @@ const Wrapper = styled(ContentWrapper)`
     position: relative;
     z-index: 5;
     max-width: 300px;
-    margin: 10px auto 20px;
+    margin: 44px auto 20px;
 
    ${media.tablet(css`
         margin: -10px auto  60px;
