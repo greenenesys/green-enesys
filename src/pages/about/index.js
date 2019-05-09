@@ -138,6 +138,10 @@ z-index: 1;
 
 ${media.tablet(css`
         display: none;
+
+        &.iphone-img{
+            display: block;
+        }
     `)};
 `
 
@@ -169,11 +173,33 @@ const ContentWrapper = styled('div')``
 const Plant = styled('img')`
     width: 100%;
 `
+let iPhone = /iPhone/.test(navigator.userAgent) && !window.MSStream;
+
+const VideoItem = function(){
+    if(!iPhone){
+        return  <Video autoPlay loop muted playSinline playsinline webkit-playsinline>
+                    <source src={"http://res.cloudinary.com/dyv4p67lk/video/upload/f_auto,q_auto/v1540291061/Videos/Wooden%20Park/Sequence_02_30_SEC.mp4"} type="video/mp4" />
+                </Video>
+        } else {
+            return <div></div>
+        }
+}
+
+const VideoImgItem = function(){
+    if (!iPhone) {
+        return <VideoImg src={VideoBg} />
+    } else {
+        return <VideoImg className='iphone-img' src={VideoBg} />
+    }
+    
+}
 
 export default class AboutPage extends React.Component {
     componentDidMount = () => {
         window.scrollTo(0, 0)
     }
+
+    
 
     render() {
         return (
@@ -199,10 +225,8 @@ export default class AboutPage extends React.Component {
                         >
                             Delivering clean and afficient energy for a sustainable planet.
                         </H2Update>
-                        <Video autoPlay loop muted playSinline playsinline webkit-playsinline>
-                            <source src={"http://res.cloudinary.com/dyv4p67lk/video/upload/f_auto,q_auto/v1540291061/Videos/Wooden%20Park/Sequence_02_30_SEC.mp4"} type="video/mp4"/>
-                        </Video>
-                        <VideoImg src={VideoBg}/>
+                        <VideoItem/>
+                        <VideoImgItem/>
                     </VideoWrapper>
                     <ArticleWrapperUpdate>
                         <H2Style2>About Green Enesys</H2Style2>
