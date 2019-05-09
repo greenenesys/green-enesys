@@ -480,6 +480,10 @@ template {
   [data-id=tooltip]{
     display: none;
   }
+
+  #root.open-menu>div{
+
+  }
 }
 
 

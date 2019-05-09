@@ -119,11 +119,14 @@ const Line4 = styled('span')`
 `
 function handleClick (e){
 	let item = e.currentTarget.parentNode;
+	let wrapper = document.getElementById('root');
 	let ac = 'open';
 
 	if(hasClass(item , ac)){
 		item.classList.remove(ac);
+		wrapper.classList.remove('open-menu')
 	}else {
+		wrapper.classList.add('open-menu')
 		item.classList.add(ac);
 	}
 

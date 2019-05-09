@@ -199,7 +199,7 @@ export default class AboutPage extends React.Component {
                         >
                             Delivering clean and afficient energy for a sustainable planet.
                         </H2Update>
-                        <Video autoPlay loop muted playSinline webkit-playsinline>
+                        <Video autoPlay loop muted playSinline playsinline webkit-playsinline>
                             <source src={"http://res.cloudinary.com/dyv4p67lk/video/upload/f_auto,q_auto/v1540291061/Videos/Wooden%20Park/Sequence_02_30_SEC.mp4"} type="video/mp4"/>
                         </Video>
                         <VideoImg src={VideoBg}/>

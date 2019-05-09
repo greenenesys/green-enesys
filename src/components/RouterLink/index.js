@@ -40,6 +40,7 @@ const RouterLink = styled(NavLink)`
 function handleClickClose(e){
   let $this = e.currentTarget;
   let allLink = $this.parentNode.childNodes;
+  document.getElementById('root').classList.remove('open-menu');
   $this.parentNode.parentNode.classList.remove('open');
 }
 

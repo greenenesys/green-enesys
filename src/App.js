@@ -4,7 +4,7 @@ import './globalStyles'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Navigation from './components/Navigation'
 import Footer from './components/Footer'
-import styled, { injectGlobal } from 'styled-components'
+import styled, { injectGlobal, css } from 'styled-components'
 
 import HomePage from './pages/home'
 import MapPage from './pages/map'
@@ -13,6 +13,7 @@ import ProjectPage from './pages/projects'
 import ImpressumPage from './pages/impressum'
 import TermsPage from './pages/terms'
 import SolutionsPage from './pages/solutions'
+import media from './lib/media'
 
 // import NoMobile from './components/NoMobile'
 
@@ -24,6 +25,26 @@ const Container = styled('div')`
     display: flex;
     flex-direction: column;
     overflow: hidden;
+
+    #root.open-menu &{
+            &:before{
+                content:'';
+                position:absolute;
+                top:0;
+                bottom:0;
+                left:0;
+                right:0;
+                    z-index: 3;
+    background: #fff;
+                
+            }
+        }
+
+    ${media.tablet(css`
+		&:before{
+                display: none;
+            }
+	`)};
 `
 
 const Content = styled('div')`

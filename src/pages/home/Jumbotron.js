@@ -57,7 +57,7 @@ const Buttom2 = styled(Button)`
 `
 
 export const IllustrationBottom = styled(IllustrationJumboBottom)`
-    bottom: 0;
+    bottom: -1px;
     position: absolute;
     z-index: 0;
     height: auto;
@@ -66,7 +66,7 @@ export const IllustrationBottom = styled(IllustrationJumboBottom)`
     transform: translateX(-30%);
 
      ${media.tablet(css`
-        bottom: 0;
+        bottom: -1px;
     `)};
 `
 
