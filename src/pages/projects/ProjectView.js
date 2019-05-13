@@ -51,11 +51,11 @@ const ArrowNext = styled(Arrow)`
     }
 `
 
-const ImgWrap = styled('img')`
-    height:auto;
-    ${media.desktop(css`
-        height: 400px;
-    `)}
+const ImgWrap = styled('div')`
+    padding-bottom: 57%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 `
 
 const H2Update = styled(H2)`
@@ -70,6 +70,8 @@ const H2Update = styled(H2)`
         font-size: 2.5em;
     `)}
 `
+
+const ImgWrapBox = styled('div')``
 
 const Wrapper = styled('div')`
 width: 100%;
@@ -161,15 +163,18 @@ class ProjectView extends React.Component {
 
         const mediaItems = () =>
             media.map(mediaItem => (
-                <div key={mediaItem}>
+                    <ImgWrapBox key={mediaItem}>
                     <ImgWrap
-                        height="400"
-                        width="100%"
+                    style={{
+                            backgroundImage: 'url(' + getCloudImageUrl(mediaItem.media_item)+')'
+                    }}
+                    height="400"
+                    width="100%"
                         key={mediaItem.media_item}
-                        alt={mediaItem.media_description}
-                        src={getCloudImageUrl(mediaItem.media_item)}
+                        // alt={mediaItem.media_description}
+                        // src={getCloudImageUrl(mediaItem.media_item)}
                     />
-                </div>
+                    </ImgWrapBox>
             ))
 
         sliderSettings.customPaging = i => {
