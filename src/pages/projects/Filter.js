@@ -157,6 +157,7 @@ const Icon = styled('img')`
     padding: 0 10px;
     font-size: 14px;
     font-weight: 400;
+    transform: rotate(180deg);
 `
 
 class Filter extends React.Component {
@@ -219,7 +220,7 @@ class Filter extends React.Component {
             <SidebarItemWrapper>
                 <СountryWrapper onClick={this.clickFolterHendler.bind(this)}>
                     <TextCountry className={'contry'}></TextCountry>
-                    <Icon src={icon}></Icon>
+                    <Icon src={img}></Icon>
                 </СountryWrapper>
                 <HeadWrapper >
                     <Left>

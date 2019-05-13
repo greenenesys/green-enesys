@@ -8,6 +8,7 @@ import Filter from './Filter'
 import CloseIcon from '../../assets/images/close.png'
 import ArrowBack from '../../assets/images/arrow-back.png'
 import { Link } from 'react-router-dom'
+import ImgClose from '../../assets/images/arrow.png'
 
 const СountryWrapper = styled('div')   `
     ${media.tablet(css`
@@ -244,7 +245,7 @@ class SideBar extends React.Component {
                 <ItemGroup>
                     <HeadGroup>
                         <HeadTitle>Filter</HeadTitle>
-                        <Back onClick={this.backHandler.bind(this)}><Close src={ArrowBack}></Close>City</Back>
+                        <Back onClick={this.backHandler.bind(this)}><Close src={ArrowBack} class></Close>Country</Back>
                         <Close src={CloseIcon} onClick={this.closeMobileMenu.bind(this)}></Close>
                     </HeadGroup>
                     <GroupContent>

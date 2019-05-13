@@ -114,19 +114,15 @@ const Item = styled('div')`
     padding: 15px;
 `
 
-const Image = styled('img')`
-    width: 100%;
-    height: auto;
-    border-radius: 2px;
-    margin: 0 auto;
+const Image = styled('div')`
+    padding-bottom: 60%;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 
     ${media.tablet(css`
-        height: 165px;
-        width: auto;
     `)};
     ${media.desktop(css`
-        height: 228px;
-        width: auto;
 	`)};
 `
 
@@ -148,6 +144,11 @@ const SlideArrow = ({ onClick, flip }) => {
     )
 }
 
+const ImgWrapper = styled('div')`
+
+`
+
+
 
 const ArrowContainer = styled('div')`
     display: flex;
@@ -166,7 +167,11 @@ const ArrowContainer = styled('div')`
 const CarouselItem = ({ index, name, image, ...props }) => {
     return (
         <Item>
-            <Image src={image} />
+            <ImgWrapper>
+                <Image style={{
+                    backgroundImage: 'url('+image+')',
+                }} src={image} />
+            </ImgWrapper>
             <DescriptionUpdate stlyle={{ textDecoration: 'none' }}>
                 {name}
             </DescriptionUpdate>
@@ -217,17 +222,20 @@ export default class Carousel extends Component {
             arrows: false,
             centerMode: true,
             slidesToScroll: 1,
-            variableWidth: true,
             autoplay: true,
-            autoplaySpeed: 5000000,
+            autoplaySpeed: 15000,
             responsive: [{
+
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 1,
+                    // centerMode: false,
+                },
 
                 breakpoint: 768,
                 settings: {
                     slidesToShow: 1,
-                    adaptiveHeight: true,
-                    centerMode: false,
-                    variableWidth: false,
+                    // centerMode: false,
                 }
             }]
         }

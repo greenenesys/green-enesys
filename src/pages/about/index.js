@@ -130,6 +130,9 @@ const Video = styled('video')`
     `)};
 `
 
+
+
+
 const VideoImg = styled('img')`
 display: block;
 width: 100%;
