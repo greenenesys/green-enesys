@@ -65,8 +65,9 @@ const ItemWrapper = styled('div')`
 const Back = styled('div')`
     display: none;
     align-items: center;
-    justify-content: space-between;
-    width: 70px;
+    justify-content: start;
+    width: calc(100vw - 120px);
+    
 
     .open-city &{
         display: flex;
@@ -150,7 +151,8 @@ const HeadTitle = styled('div')`
 `
 const Close = styled('img')``
 
-const  TextCountry = styled('div') ``
+const  TextCountry = styled('div') `
+padding-left: 10px;`
 
 class SideBar extends React.Component {
     static propTypes = {

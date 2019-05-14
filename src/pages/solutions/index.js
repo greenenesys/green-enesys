@@ -72,6 +72,7 @@ const ImageWrapper = styled('div')`
     width: 100%;
     max-width: 230px;
     margin: 0 auto;
+    height: 230px;
     
     
     ${media.tablet(css`
@@ -79,6 +80,7 @@ const ImageWrapper = styled('div')`
         width: 250px;
         padding-right: 35px;
         max-width: 9999px;
+         height: auto;
     `)};
     ${media.desktop(css`
         width:auto;
