@@ -150,6 +150,8 @@ const HeadTitle = styled('div')`
 `
 const Close = styled('img')``
 
+const  TextCountry = styled('div') ``
+
 class SideBar extends React.Component {
     static propTypes = {
         activeProject: PropTypes.object,
@@ -209,7 +211,7 @@ class SideBar extends React.Component {
                                 if (!index) rout = project.slugs[0];
                                 return (
                                     
-                                    <SideBarItem
+                                    <SideBarItem 
                                         router={this.props.router}
                                         project={project}
                                         handleClick={
@@ -233,6 +235,7 @@ class SideBar extends React.Component {
     }
 
     render() {
+        console.log(this.props)
 
         return (
             <FilterWrapper id={'filter'}>
@@ -245,7 +248,7 @@ class SideBar extends React.Component {
                 <ItemGroup>
                     <HeadGroup>
                         <HeadTitle>Filter</HeadTitle>
-                        <Back onClick={this.backHandler.bind(this)}><Close src={ArrowBack} class></Close>Country</Back>
+                        <Back onClick={this.backHandler.bind(this)}><Close src={ArrowBack} class></Close> <TextCountry className={'contry-name'}>Country</TextCountry></Back>
                         <Close src={CloseIcon} onClick={this.closeMobileMenu.bind(this)}></Close>
                     </HeadGroup>
                     <GroupContent>

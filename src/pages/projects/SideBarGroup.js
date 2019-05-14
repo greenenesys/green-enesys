@@ -63,6 +63,13 @@ class SidebarGroup extends React.Component {
         function hasClass(target, className) {
             return new RegExp('(\\s|^)' + className + '(\\s|$)').test(target.className);
         }
+
+        let backCountri = document.getElementsByClassName('contry-name');
+        if(backCountri.length){
+            for(let i = 0; i<backCountri.length; i++){
+                backCountri[i].innerHTML = this.props.children[1];
+            }
+        }
     }
 
     render() {

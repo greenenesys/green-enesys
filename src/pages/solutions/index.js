@@ -75,6 +75,7 @@ const ImageWrapper = styled('div')`
     
     
     ${media.tablet(css`
+    padding-top: 0;
         width: 250px;
         padding-right: 35px;
         max-width: 9999px;
@@ -87,10 +88,11 @@ const ImageWrapper = styled('div')`
 
 const Wrapper = styled('div')`
     display: flex;
-    margin-top: 30px;
+    margin-top: -60px;
     justify-content: center;
     align-items: start;
     flex-direction: column-reverse;
+    padding-top: 90px;
 
     ${media.tablet(css`
         flex-direction: row;

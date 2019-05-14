@@ -197,6 +197,12 @@ class ProjectView extends React.Component {
                 items[i].innerHTML = this.props.activeProject.data.country;
             }
         }
+        let itemsTwo = document.getElementsByClassName('contry-name');
+        if (itemsTwo.length){
+            for(let i = 0; i<itemsTwo.length;i++){
+                itemsTwo[i].innerHTML = this.props.activeProject.data.country;
+            }
+        }
         return (
             <div style={{ width: '100%' }}>
                 <H2Update strip mb={4}>
