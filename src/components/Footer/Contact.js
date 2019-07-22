@@ -168,7 +168,7 @@ const Links = () => {
                 <br />
                 <BottomLink to="/about">About Us</BottomLink>
                 <br />
-                <BottomLink to = "/impressum" >Impressum4123< /BottomLink>
+                <BottomLink to = "http://greenenesys.synology.me" > SERVER LOGIN < /BottomLink>
                 <br />
                 <BottomLink to="/terms">Terms</BottomLink>
                 <br />
