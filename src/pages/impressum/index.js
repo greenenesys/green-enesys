@@ -10,7 +10,7 @@ export default class AboutPage extends React.Component {
     render() {
         return (
             <ContentWrapper my={200}>
-                <H2> Impressum </H2>
+                <H2> Impressum123 </H2>
             </ContentWrapper>
         )
     }
