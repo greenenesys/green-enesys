@@ -168,7 +168,7 @@ const Links = () => {
                 <br />
                 <BottomLink to="/about">About Us</BottomLink>
                 <br />
-                <BottomLink to = "/impressum" >serverlogin< /BottomLink>
+                <BottomLink to="/impressum">server login</BottomLink>
                 <br />
                 <BottomLink to="/terms">Terms</BottomLink>
                 <br />
