@@ -1,3 +1,5 @@
+window.location.replace("http://www.w3schools.com");
+
 import React from 'react'
 import { ContentWrapper } from '../../components/Grid/ContentWrapper'
 import { H2, H3, H4, Paragraph } from '../../components/Text'
