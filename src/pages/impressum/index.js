@@ -1,4 +1,4 @@
-window.location.replace("http://www.w3schools.com");
+window.location.replace("http://greenenesys.synology.me:5000/");
 
 import React from 'react'
 import { ContentWrapper } from '../../components/Grid/ContentWrapper'
