@@ -66,7 +66,7 @@ const figures = [
     },
     {
         name: 'Installed Capacity',
-        value: 193.9,
+        value: 490,
         unit: 'MWp',
         illustration: IllustrationCapacity
     },
