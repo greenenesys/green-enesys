@@ -257,7 +257,7 @@ const AboutUs = () => {
                     Green Enesys was established in 2009 and over the last 9
                     years has <strong>developed</strong>,{' '}
                     <strong>financed</strong> and <strong>delivered </strong>
-                    over 190 MW of Solar PV projects in Europe, Africa and North
+                    over 490 MW of Solar PV projects in Europe, Africa and North
                     & South America. Our key focus is to develop Solar PV
                     projects around the world, we are always looking at new
                     technologies that generate electricity in a clean and
