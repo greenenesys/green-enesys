@@ -1,5 +1,3 @@
-window.location.replace("http://greenenesys.synology.me:5000/");
-
 import React from 'react'
 import { ContentWrapper } from '../../components/Grid/ContentWrapper'
 import { H2, H3, H4, Paragraph } from '../../components/Text'
