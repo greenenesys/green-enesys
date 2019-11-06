@@ -65,7 +65,7 @@ const figures = [
         illustration: IllustrationGeneration
     },
     {
-        name: 'Installed Capacity',
+        name: 'Developed Capacity',
         value: 490.0,
         unit: 'MWp',
         illustration: IllustrationCapacity
