@@ -226,7 +226,7 @@ export default class AboutPage extends React.Component {
                                 fontWeight: 600,
                             }}
                         >
-                            Delivering clean and afficient energy for a sustainable planet.
+                            Delivering clean and efficient energy for a sustainable planet.
                         </H2Update>
                         <VideoItem/>
                         <VideoImgItem/>
